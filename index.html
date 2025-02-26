@@ -7,7 +7,70 @@
     <link rel="stylesheet" href="styles.css">
     <style>
         body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: 'Roboto', sans-serif;
             overflow-y: scroll;
+            margin: 0;
+            padding: 0;
+        }
+        header, main, section {
+            padding: 20px;
+        }
+        header {
+            background-color: #1f1f1f;
+            text-align: center;
+        }
+        h1, h2, p, ul, li, a {
+            color: #ffffff;
+        }
+        a {
+            text-decoration: none;
+            color: #1db954;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        iframe {
+            border: none;
+            margin-bottom: 20px;
+        }
+        .comment-section {
+            background-color: #1f1f1f;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .comment-section h2 {
+            margin-top: 0;
+        }
+        .comment-box {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #333;
+            background-color: #333;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+        .comment-button {
+            background-color: #1db954;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .comment-button:hover {
+            background-color: #1ed760;
+        }
+        .comment {
+            background-color: #333;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .comment p {
+            margin: 0;
         }
     </style>
 </head>
@@ -53,7 +116,52 @@
             <h2>Contact</h2>
             <p>Email: <a href="mailto:your.email@example.com">your.email@example.com</a></p>
         </section>
+        <section id="comments" class="comment-section">
+            <h2>Comments</h2>
+            <p>All comments are anonymous. Feel free to share your thoughts!</p>
+            <textarea class="comment-box" id="commentBox" placeholder="Write your comment here..."></textarea>
+            <button class="comment-button" onclick="addComment()">Submit</button>
+            <div id="commentList"></div>
+        </section>
     </main>
-    <script src="script.js"></script>
+    <script>
+        function addComment() {
+            const commentBox = document.getElementById('commentBox');
+            const commentList = document.getElementById('commentList');
+            const commentText = commentBox.value;
+
+            if (commentText.trim() !== '') {
+                const comment = document.createElement('div');
+                comment.className = 'comment';
+                comment.innerHTML = `<p>${commentText}</p>`;
+                commentList.appendChild(comment);
+                commentBox.value = '';
+
+                saveComment(commentText);
+            }
+        }
+
+        function saveComment(comment) {
+            let comments = localStorage.getItem('comments');
+            comments = comments ? JSON.parse(comments) : [];
+            comments.push(comment);
+            localStorage.setItem('comments', JSON.stringify(comments));
+        }
+
+        function loadComments() {
+            let comments = localStorage.getItem('comments');
+            comments = comments ? JSON.parse(comments) : [];
+            const commentList = document.getElementById('commentList');
+
+            comments.forEach(comment => {
+                const commentDiv = document.createElement('div');
+                commentDiv.className = 'comment';
+                commentDiv.innerHTML = `<p>${comment}</p>`;
+                commentList.appendChild(commentDiv);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', loadComments);
+    </script>
 </body>
 </html>
