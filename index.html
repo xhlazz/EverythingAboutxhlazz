@@ -15,28 +15,25 @@
             overflow-y: scroll;
             margin: 0;
             padding: 0;
+            position: relative;
         }
-        header, main, section {
+        video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1;
+            object-fit: cover;
+            filter: brightness(50%);
+        }
+        main, section {
             padding: 20px;
-        }
-        header {
-            background-color: #1f1f1f;
-            text-align: center;
-        }
-        .social-media {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-        .social-media img {
-            width: 50px;
-            height: 50px;
-            margin: 0 10px;
-            cursor: pointer;
         }
         h1 {
             font-weight: 900;
             letter-spacing: 2px;
+            text-align: center;
         }
         h2, p, a {
             color: #ffffff;
@@ -85,23 +82,44 @@
             padding: 10px;
             border-radius: 5px;
             margin-bottom: 10px;
+            position: relative;
         }
         .comment p {
             margin: 0;
         }
+        .comment-actions {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+        .comment-actions button {
+            background: none;
+            border: none;
+            color: #1db954;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        .edit-comment-box {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #333;
+            background-color: #333;
+            color: #fff;
+            margin-top: 10px;
+            display: none;
+        }
     </style>
 </head>
 <body>
-    <header>
-        <h1>About xhlazz</h1>
-        <div class="social-media">
-            <a href="mailto:xhlazzpersonal@gmail.com" target="_blank">
-                <img src="https://cdn.discordapp.com/attachments/1114702060147974318/1344404662903898236/download.png?ex=67c0c9e9&is=67bf7869&hm=af4e07c89b3529facafd3b11d540abe24d86e1715a700a9edd666d281d7f270e" alt="Email">
-            </a>
-        </div>
-    </header>
+    <video autoplay muted loop id="bg-video">
+        <source src="https://www.youtube.com/embed/HfjHOcOQUr0?autoplay=1&loop=1&mute=1&playlist=HfjHOcOQUr0" type="video/mp4">
+        <source src="https://www.youtube.com/embed/ZEKbXlVcXz0?autoplay=1&loop=1&mute=1&playlist=ZEKbXlVcXz0" type="video/mp4">
+    </video>
+
     <main>
         <section id="about">
+            <h1>About xhlazz</h1>
             <h2>About Me</h2>
             <p>Hello! My name is [Your Name]. I am a [Your Profession/Occupation].</p>
         </section>
@@ -117,6 +135,7 @@
             <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/4bQ7mjty0UVlKRalhizpGT?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
             <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/33UcDI1NKBpAuHIKs1du3n?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
             <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/2R4AlwtrrkMaRKojcTIzmL?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/5QHI0lIWGw3ffgqVX0kJmO?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
         </section>
         <section id="contact">
             <h2>Contact</h2>
@@ -137,20 +156,71 @@
             const commentText = commentBox.value;
 
             if (commentText.trim() !== '') {
+                const commentId = Date.now().toString();
                 const comment = document.createElement('div');
                 comment.className = 'comment';
-                comment.innerHTML = `<p>${commentText}</p>`;
+                comment.id = commentId;
+                comment.innerHTML = `<p>${commentText}</p>
+                    <div class="comment-actions">
+                        <button onclick="editComment('${commentId}')">Edit</button>
+                        <button onclick="deleteComment('${commentId}')">Delete</button>
+                    </div>
+                    <textarea class="edit-comment-box" id="edit-${commentId}">${commentText}</textarea>
+                    <button class="comment-button" style="display: none;" id="save-${commentId}" onclick="saveComment('${commentId}')">Save</button>`;
                 commentList.appendChild(comment);
                 commentBox.value = '';
 
-                saveComment(commentText);
+                saveCommentToStorage(commentId, commentText);
             }
         }
 
-        function saveComment(comment) {
+        function editComment(commentId) {
+            const commentText = document.getElementById(commentId).querySelector('p').innerText;
+            const editBox = document.getElementById(`edit-${commentId}`);
+            const saveButton = document.getElementById(`save-${commentId}`);
+
+            editBox.style.display = 'block';
+            saveButton.style.display = 'inline-block';
+            editBox.value = commentText;
+        }
+
+        function saveComment(commentId) {
+            const editBox = document.getElementById(`edit-${commentId}`);
+            const newText = editBox.value;
+
+            document.getElementById(commentId).querySelector('p').innerText = newText;
+            editBox.style.display = 'none';
+            document.getElementById(`save-${commentId}`).style.display = 'none';
+
+            updateCommentInStorage(commentId, newText);
+        }
+
+        function deleteComment(commentId) {
+            const comment = document.getElementById(commentId);
+            comment.remove();
+
+            deleteCommentFromStorage(commentId);
+        }
+
+        function saveCommentToStorage(commentId, commentText) {
             let comments = localStorage.getItem('comments');
             comments = comments ? JSON.parse(comments) : [];
-            comments.push(comment);
+            comments.push({ id: commentId, text: commentText });
+            localStorage.setItem('comments', JSON.stringify(comments));
+        }
+
+        function updateCommentInStorage(commentId, newText) {
+            let comments = localStorage.getItem('comments');
+            comments = comments ? JSON.parse(comments) : [];
+            const commentIndex = comments.findIndex(comment => comment.id === commentId);
+            comments[commentIndex].text = newText;
+            localStorage.setItem('comments', JSON.stringify(comments));
+        }
+
+        function deleteCommentFromStorage(commentId) {
+            let comments = localStorage.getItem('comments');
+            comments = comments ? JSON.parse(comments) : [];
+            comments = comments.filter(comment => comment.id !== commentId);
             localStorage.setItem('comments', JSON.stringify(comments));
         }
 
@@ -162,7 +232,14 @@
             comments.forEach(comment => {
                 const commentDiv = document.createElement('div');
                 commentDiv.className = 'comment';
-                commentDiv.innerHTML = `<p>${comment}</p>`;
+                commentDiv.id = comment.id;
+                commentDiv.innerHTML = `<p>${comment.text}</p>
+                    <div class="comment-actions">
+                        <button onclick="editComment('${comment.id}')">Edit</button>
+                        <button onclick="deleteComment('${comment.id}')">Delete</button>
+                    </div>
+                    <textarea class="edit-comment-box" id="edit-${comment.id}">${comment.text}</textarea>
+                    <button class="comment-button" style="display: none;" id="save-${comment.id}" onclick="saveComment('${comment.id}')">Save</button>`;
                 commentList.appendChild(commentDiv);
             });
         }
