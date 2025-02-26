@@ -26,6 +26,17 @@
             z-index: -1;
             overflow: hidden;
         }
+        video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -1;
+            object-fit: cover;
+        }
         main, section {
             padding: 20px;
         }
@@ -111,7 +122,11 @@
     </style>
 </head>
 <body>
-    <div id="video-background"></div>
+    <div id="video-background">
+        <video autoplay muted loop>
+            <source src="https://www.desktophut.com/files/4a63pbUfw8EKOnc_Red%20Eye.mp4" type="video/mp4">
+        </video>
+    </div>
 
     <main>
         <section id="about">
@@ -132,6 +147,8 @@
             <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/33UcDI1NKBpAuHIKs1du3n?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
             <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/2R4AlwtrrkMaRKojcTIzmL?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
             <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/5QHI0lIWGw3ffgqVX0kJmO?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/2ldcyQeCuDeWPZItm1IgSv?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/3SJQhninUfjG9hVOeJpLyn?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
         </section>
         <section id="contact">
             <h2>Contact</h2>
@@ -241,74 +258,6 @@
         }
 
         document.addEventListener('DOMContentLoaded', loadComments);
-
-        // YouTube IFrame API integration
-        var tag = document.createElement('script');
-        tag.src = "https://www.youtube.com/iframe_api";
-        var firstScriptTag = document.getElementsByTagName('script')[0];
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-        var player1, player2;
-        var currentVideo = 1;
-
-        function onYouTubeIframeAPIReady() {
-            player1 = new YT.Player('video-background', {
-                height: '1080',
-                width: '1920',
-                videoId: 'HfjHOcOQUr0',
-                playerVars: {
-                    'autoplay': 1,
-                    'controls': 0,
-                    'showinfo': 0,
-                    'modestbranding': 1,
-                    'loop': 1,
-                    'playlist': 'HfjHOcOQUr0',
-                    'mute': 1
-                },
-                events: {
-                    'onReady': onPlayerReady,
-                    'onStateChange': onPlayerStateChange
-                }
-            });
-
-            player2 = new YT.Player('video-background', {
-                height: '1080',
-                width: '1920',
-                videoId: 'ZEKbXlVcXz0',
-                playerVars: {
-                    'autoplay': 0,
-                    'controls': 0,
-                    'showinfo': 0,
-                    'modestbranding': 1,
-                    'loop': 1,
-                    'playlist': 'ZEKbXlVcXz0',
-                    'mute': 1
-                },
-                events: {
-                    'onReady': onPlayerReady,
-                    'onStateChange': onPlayerStateChange
-                }
-            });
-        }
-
-        function onPlayerReady(event) {
-            if (currentVideo === 1) {
-                event.target.playVideo();
-            }
-        }
-
-        function onPlayerStateChange(event) {
-            if (event.data === YT.PlayerState.ENDED) {
-                currentVideo = currentVideo === 1 ? 2 : 1;
-                if (currentVideo === 1) {
-                    player1.playVideo();
-                    player2.stopVideo();
-                } else {
-                    player2.playVideo();
-                    player1.stopVideo();
-                }
-            }
-        }
     </script>
 </body>
 </html>
