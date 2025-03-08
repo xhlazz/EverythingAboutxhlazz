@@ -66,67 +66,6 @@
             margin-bottom: 20px;
             border-radius: 12px;
         }
-        .comment-section {
-            background-color: #1f1f1f;
-            padding: 20px;
-            border-radius: 10px;
-            border: 2px solid #ffffff;
-        }
-        .comment-section h2 {
-            margin-top: 0;
-        }
-        .comment-box {
-            width: 100%;
-            padding: 10px;
-            border-radius: 5px;
-            border: 1px solid #333;
-            background-color: #333;
-            color: #fff;
-            margin-bottom: 10px;
-        }
-        .comment-button {
-            background-color: #ffffff;
-            color: #000000;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .comment-button:hover {
-            background-color: #cccccc;
-        }
-        .comment {
-            background-color: #333;
-            padding: 10px;
-            border-radius: 5px;
-            margin-bottom: 10px;
-            position: relative;
-        }
-        .comment p {
-            margin: 0;
-        }
-        .comment-actions {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-        }
-        .comment-actions button {
-            background: none;
-            border: none;
-            color: #ffffff;
-            cursor: pointer;
-            margin-left: 10px;
-        }
-        .edit-comment-box {
-            width: 100%;
-            padding: 10px;
-            border-radius: 5px;
-            border: 1px solid #333;
-            background-color: #333;
-            color: #fff;
-            margin-top: 10px;
-            display: none;
-        }
         .toggle-button {
             background-color: #ffffff;
             color: #000000;
@@ -149,7 +88,7 @@
         .arrow-up {
             transform: rotate(180deg);
         }
-        #hobbies-section, #music-section {
+        #music-section {
             display: none;
         }
     </style>
@@ -164,50 +103,35 @@
     <h1>About xhlazz</h1>
     <main>
         <section id="hobbies">
-            <button class="toggle-button" onclick="toggleHobbies()">
-                Hobbies <span class="arrow">&#x25BC;</span>
+            <h2>Hobbies</h2>
+            <button class="toggle-button" onclick="toggleMusic()">
+                Music <span class="arrow">&#x25BC;</span>
             </button>
-            <section id="hobbies-section">
-                <button class="toggle-button" onclick="toggleMusic()">
-                    Music <span class="arrow">&#x25BC;</span>
-                </button>
-                <section id="music-section">
-                    <section id="music">
-                        <h2>My Type Of Music</h2>
-                        <p>My Fav</p>
-                        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/13lyjsOssHRrmGyoUZ6lSM?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-                        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/75IQVo8hqI1iwVZyvkN2VT?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-                        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/1KdVrXbCry9RJaIFylT8CY?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-                        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/1fovieeKfPGUiiuQeNpIHI?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-                        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/5rFQJcsqwaVfm3qVwCIdpD?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-                        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/4XAy4pRvpdnjSbMeynKyCi?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-                        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/4bQ7mjty0UVlKRalhizpGT?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-                        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/33UcDI1NKBpAuHIKs1du3n?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-                        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/2R4AlwtrrkMaRKojcTIzmL?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-                        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/5QHI0lIWGw3ffgqVX0kJmO?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-                        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/2ldcyQeCuDeWPZItm1IgSv?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-                        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/3SJQhninUfjG9hVOeJpLyn?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-                        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/2RtZKzu0iHB5VRsV0itmdy?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-                    </section>
-                    <section id="favorite-artists">
-                        <h2>Favorite Artists</h2>
-                        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/artist/585mUNJeJoLyRHXH0E7nX8?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-                        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/artist/0EKvKtaSHhGT2Sppi8qZLS?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-                        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/artist/2O6WxYXVduRSokMq8JHHkT?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-                    </section>
+            <section id="music-section">
+                <section id="music">
+                    <h2>My Type Of Music</h2>
+                    <p>My Fav</p>
+                    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/13lyjsOssHRrmGyoUZ6lSM?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/75IQVo8hqI1iwVZyvkN2VT?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/1KdVrXbCry9RJaIFylT8CY?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/1fovieeKfPGUiiuQeNpIHI?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/5rFQJcsqwaVfm3qVwCIdpD?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/4XAy4pRvpdnjSbMeynKyCi?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/4bQ7mjty0UVlKRalhizpGT?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/33UcDI1NKBpAuHIKs1du3n?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/2R4AlwtrrkMaRKojcTIzmL?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/5QHI0lIWGw3ffgqVX0kJmO?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/2ldcyQeCuDeWPZItm1IgSv?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/3SJQhninUfjG9hVOeJpLyn?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/2RtZKzu0iHB5VRsV0itmdy?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                </section>
+                <section id="favorite-artists">
+                    <h2>Favorite Artists</h2>
+                    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/artist/585mUNJeJoLyRHXH0E7nX8?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/artist/0EKvKtaSHhGT2Sppi8qZLS?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/artist/2O6WxYXVduRSokMq8JHHkT?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
                 </section>
             </section>
-        </section>
-        <section id="contact">
-            <h2>Contact</h2>
-            <p>Email: <a href="mailto:xhlazzpersonal@gmail.com">xhlazzpersonal@gmail.com</a></p>
-        </section>
-        <section id="comments" class="comment-section">
-            <h2>Comments</h2>
-            <p>All comments are anonymous. Feel free to share your thoughts!</p>
-            <textarea class="comment-box" id="commentBox" placeholder="Write your comment here..."></textarea>
-            <button class="comment-button" onclick="addComment()">Submit</button>
-            <div id="commentList"></div>
         </section>
     </main>
     <script>
@@ -234,102 +158,6 @@
                 musicArrow.classList.remove('arrow-up');
             }
         }
-
-        function addComment() {
-            const commentBox = document.getElementById('commentBox');
-            const commentList = document.getElementById('commentList');
-            const commentText = commentBox.value;
-
-            if (commentText.trim() !== '') {
-                const commentId = Date.now().toString();
-                const comment = document.createElement('div');
-                comment.className = 'comment';
-                comment.id = commentId;
-                comment.innerHTML = `<p>${commentText}</p>
-                    <div class="comment-actions">
-                        <button onclick="editComment('${commentId}')">Edit</button>
-                        <button onclick="deleteComment('${commentId}')">Delete</button>
-                    </div>
-                    <textarea class="edit-comment-box" id="edit-${commentId}">${commentText}</textarea>
-                    <button class="comment-button" style="display: none;" id="save-${commentId}" onclick="saveComment('${commentId}')">Save</button>`;
-                commentList.appendChild(comment);
-                commentBox.value = '';
-
-                saveCommentToStorage(commentId, commentText);
-            }
-        }
-
-        function editComment(commentId) {
-            const commentText = document.getElementById(commentId).querySelector('p').innerText;
-            const editBox = document.getElementById(`edit-${commentId}`);
-            const saveButton = document.getElementById(`save-${commentId}`);
-
-            editBox.style.display = 'block';
-            saveButton.style.display = 'inline-block';
-            editBox.value = commentText;
-        }
-
-        function saveComment(commentId) {
-            const editBox = document.getElementById(`edit-${commentId}`);
-            const newText = editBox.value;
-
-            document.getElementById(commentId).querySelector('p').innerText = newText;
-            editBox.style.display = 'none';
-            document.getElementById(`save-${commentId}`).style.display = 'none';
-
-            updateCommentInStorage(commentId, newText);
-        }
-
-        function deleteComment(commentId) {
-            const comment = document.getElementById(commentId);
-            comment.remove();
-
-            deleteCommentFromStorage(commentId);
-        }
-
-        function saveCommentToStorage(commentId, commentText) {
-            let comments = localStorage.getItem('comments');
-            comments = comments ? JSON.parse(comments) : [];
-            comments.push({ id: commentId, text: commentText });
-            localStorage.setItem('comments', JSON.stringify(comments));
-        }
-
-        function updateCommentInStorage(commentId, newText) {
-            let comments = localStorage.getItem('comments');
-            comments = comments ? JSON.parse(comments) : [];
-            const commentIndex = comments.findIndex(comment => comment.id === commentId);
-            comments[commentIndex].text = newText;
-            localStorage.setItem('comments', JSON.stringify(comments));
-        }
-
-        function deleteCommentFromStorage(commentId) {
-            let comments = localStorage.getItem('comments');
-            comments = comments ? JSON.parse(comments) : [];
-            comments = comments.filter(comment => comment.id !== commentId);
-            localStorage.setItem('comments', JSON.stringify(comments));
-        }
-
-        function loadComments() {
-            let comments = localStorage.getItem('comments');
-            comments = comments ? JSON.parse(comments) : [];
-            const commentList = document.getElementById('commentList');
-
-            comments.forEach(comment => {
-                const commentDiv = document.createElement('div');
-                commentDiv.className = 'comment';
-                commentDiv.id = comment.id;
-                commentDiv.innerHTML = `<p>${comment.text}</p>
-                    <div class="comment-actions">
-                        <button onclick="editComment('${comment.id}')">Edit</button>
-                        <button onclick="deleteComment('${comment.id}')">Delete</button>
-                    </div>
-                    <textarea class="edit-comment-box" id="edit-${comment.id}">${comment.text}</textarea>
-                    <button class="comment-button" style="display: none;" id="save-${comment.id}" onclick="saveComment('${comment.id}')">Save</button>`;
-                commentList.appendChild(commentDiv);
-            });
-        }
-
-        document.addEventListener('DOMContentLoaded', loadComments);
     </script>
 </body>
 </html>
