@@ -159,10 +159,8 @@
             <h2>About Me</h2>
             <p>My internet name is xhlazz, as you can see this is almost all about me. I will further increase this website, and also add all about me, feel free to suggest something in my Discord.</p>
         </section>
-        <button class="toggle-button" onclick="toggleHobbies()">
-            Hobbies <span class="arrow">&#x25BC;</span>
-        </button>
-        <section id="hobbies-section">
+        <section id="hobbies">
+            <h2>Hobbies</h2>
             <button class="toggle-button" onclick="toggleMusic()">
                 Music <span class="arrow">&#x25BC;</span>
             </button>
@@ -207,7 +205,7 @@
     <script>
         function toggleHobbies() {
             const hobbiesSection = document.getElementById('hobbies-section');
-            const hobbiesArrow = document.querySelector('.toggle-button .arrow');
+            const hobbiesArrow = document.querySelector('#hobbies .toggle-button .arrow');
             if (hobbiesSection.style.display === 'none' || hobbiesSection.style.display === '') {
                 hobbiesSection.style.display = 'block';
                 hobbiesArrow.classList.add('arrow-up');
