@@ -149,16 +149,22 @@
             border-radius: 10px;
             display: inline-block;
             text-align: left;
-            border: 2px solid #ffffff;
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 10px white; /* Neon white glow */
+            border: 2px solid white;
             margin: 20px;
         }
         #profile img {
             border-radius: 50%;
-            width: 80px;
-            height: 80px;
+            width: 100px;
+            height: 100px;
+            display: block;
+            margin: 0 auto;
+            box-shadow: 0 0 15px white; /* Neon white glow around avatar */
         }
         .status {
             font-weight: bold;
+            text-transform: capitalize;
         }
     </style>
 </head>
@@ -172,10 +178,7 @@
     <main>
         <section id="about">
             <h1>About xhlazz</h1>
-        </section>
-        <section id="profile">
-            <h1>My Discord Profile</h1>
-            <div id="profile-content">
+            <div id="profile">
                 <img id="avatar" src="" alt="Avatar">
                 <h2 id="username"></h2>
                 <p>Status: <span class="status" id="status"></span></p>
@@ -258,7 +261,7 @@
 
             document.getElementById("avatar").src = `https://cdn.discordapp.com/avatars/${data.discord_user.id}/${data.discord_user.avatar}.png`;
             document.getElementById("username").innerText = `${data.discord_user.username}#${data.discord_user.discriminator}`;
-            document.getElementById("status").innerText = data.discord_status.charAt(0).toUpperCase() + data.discord_status.slice(1);
+            document.getElementById("status").innerText = data.discord_status;
             document.getElementById("activity").innerText = data.activities.length > 0 
                 ? `Currently ${data.activities[0].type === 0 ? "playing" : "doing"}: ${data.activities[0].name}` 
                 : "Not doing anything...";
@@ -359,4 +362,4 @@
                         <button onclick="deleteComment('${comment.id}')">Delete</button>
                     </div>
                     <textarea class="edit-comment-box" id="edit-${comment.id}">${comment.text}</textarea>
-                    <button class="comment-button" style="display: none;"
+                    <button class="comment-button" style="display: none;" id
