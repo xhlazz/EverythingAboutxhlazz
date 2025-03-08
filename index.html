@@ -37,13 +37,21 @@
             z-index: -1;
             object-fit: cover;
         }
+        h1 {
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-align: center;
+            margin-top: 20px;
+            color: #ffffff;
+            text-shadow: 0 0 10px #ffffff;
+        }
         main, section {
             padding: 20px;
             border: 2px solid #ffffff;
             border-radius: 12px;
             margin: 20px;
         }
-        h1, h2, p, a {
+        h2, p, a {
             color: #ffffff;
         }
         a {
@@ -144,27 +152,6 @@
         #hobbies-section, #music-section {
             display: none;
         }
-        #profile {
-            padding: 20px;
-            border-radius: 10px;
-            display: inline-block;
-            text-align: left;
-            background: rgba(255, 255, 255, 0.1);
-            box-shadow: 0 0 10px white; /* Neon white glow */
-            border: 2px solid white;
-            margin: 20px;
-        }
-        #profile img {
-            border-radius: 50%;
-            width: 100px;
-            height: 100px;
-            display: block;
-            margin: 0 auto;
-            box-shadow: 0 0 15px white; /* Neon white glow around avatar */
-        }
-        .status {
-            font-weight: bold;
-        }
     </style>
 </head>
 <body>
@@ -174,46 +161,40 @@
         </video>
     </div>
 
+    <h1>About xhlazz</h1>
     <main>
-        <section id="about">
-            <h1>About xhlazz</h1>
-            <div id="profile">
-                <img id="avatar" src="" alt="Avatar">
-                <h2 id="username"></h2>
-                <p>Status: <span class="status" id="status"></span></p>
-                <p id="custom-status"></p>
-                <p id="activity"></p>
-                <p id="spotify"></p>
-            </div>
-        </section>
         <section id="hobbies">
-            <h2>Hobbies</h2>
-            <button class="toggle-button" onclick="toggleMusic()">
-                Music <span class="arrow">&#x25BC;</span>
+            <button class="toggle-button" onclick="toggleHobbies()">
+                Hobbies <span class="arrow">&#x25BC;</span>
             </button>
-            <section id="music-section">
-                <section id="music">
-                    <h2>My Type Of Music</h2>
-                    <p>My Fav</p>
-                    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/13lyjsOssHRrmGyoUZ6lSM?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-                    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/75IQVo8hqI1iwVZyvkN2VT?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-                    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/1KdVrXbCry9RJaIFylT8CY?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-                    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/1fovieeKfPGUiiuQeNpIHI?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-                    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/5rFQJcsqwaVfm3qVwCIdpD?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-                    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/4XAy4pRvpdnjSbMeynKyCi?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-                    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/4bQ7mjty0UVlKRalhizpGT?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-                    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/33UcDI1NKBpAuHIKs1du3n?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-                    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/2R4AlwtrrkMaRKojcTIzmL?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-                    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/5QHI0lIWGw3ffgqVX0kJmO?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-                    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/2ldcyQeCuDeWPZItm1IgSv?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-                    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/3SJQhninUfjG9hVOeJpLyn?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-                    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/2RtZKzu0iHB5VRsV0itmdy?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-                </section>
-                <section id="favorite-artists">
-                    <h2>Favorite Artists</h2>
-                    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/artist/585mUNJeJoLyRHXH0E7nX8?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-                    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/artist/0EKvKtaSHhGT2Sppi8qZLS?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-                    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/artist/2O6WxYXVduRSokMq8JHHkT?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <section id="hobbies-section">
+                <button class="toggle-button" onclick="toggleMusic()">
+                    Music <span class="arrow">&#x25BC;</span>
+                </button>
+                <section id="music-section">
+                    <section id="music">
+                        <h2>My Type Of Music</h2>
+                        <p>My Fav</p>
+                        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/13lyjsOssHRrmGyoUZ6lSM?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/75IQVo8hqI1iwVZyvkN2VT?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/1KdVrXbCry9RJaIFylT8CY?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/1fovieeKfPGUiiuQeNpIHI?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/5rFQJcsqwaVfm3qVwCIdpD?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/4XAy4pRvpdnjSbMeynKyCi?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/4bQ7mjty0UVlKRalhizpGT?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/33UcDI1NKBpAuHIKs1du3n?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/2R4AlwtrrkMaRKojcTIzmL?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/5QHI0lIWGw3ffgqVX0kJmO?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/2ldcyQeCuDeWPZItm1IgSv?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/3SJQhninUfjG9hVOeJpLyn?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/2RtZKzu0iHB5VRsV0itmdy?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                    </section>
+                    <section id="favorite-artists">
+                        <h2>Favorite Artists</h2>
+                        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/artist/585mUNJeJoLyRHXH0E7nX8?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/artist/0EKvKtaSHhGT2Sppi8qZLS?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/artist/2O6WxYXVduRSokMq8JHHkT?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                    </section>
                 </section>
             </section>
         </section>
@@ -253,41 +234,6 @@
                 musicArrow.classList.remove('arrow-up');
             }
         }
-
-        async function fetchDiscordData() {
-            const userID = "996117984928088167";
-            const response = await fetch(`https://api.lanyard.rest/v1/users/${userID}`);
-            const { data } = await response.json();
-
-            document.getElementById("avatar").src = `https://cdn.discordapp.com/avatars/${data.discord_user.id}/${data.discord_user.avatar}.png`;
-            document.getElementById("username").innerText = data.discord_user.global_name;
-            
-            const statusElement = document.getElementById("status");
-            statusElement.innerText = data.discord_status;
-            statusElement.style.color = data.discord_status === "online" ? "limegreen" : 
-                                        data.discord_status === "idle" ? "yellow" : 
-                                        data.discord_status === "dnd" ? "red" : "gray";
-
-            const customStatus = data.activities.find(act => act.type === 4);
-            document.getElementById("custom-status").innerText = customStatus ? `💬 ${customStatus.state}` : "";
-
-            const activityElement = document.getElementById("activity");
-            const currentActivity = data.activities.find(act => act.type !== 4 && act.name !== "Spotify");
-            activityElement.innerText = currentActivity ? `🎮 ${currentActivity.name}` : "Not doing anything...";
-
-            const spotifyElement = document.getElementById("spotify");
-            if (data.listening_to_spotify) {
-                spotifyElement.innerHTML = `
-                    🎵 Listening to <b>${data.spotify.song}</b> by ${data.spotify.artist} <br>
-                    <img src="${data.spotify.album_art_url}" width="100">
-                `;
-            } else {
-                spotifyElement.innerText = "";
-            }
-        }
-
-        fetchDiscordData();
-        setInterval(fetchDiscordData, 5000);
 
         function addComment() {
             const commentBox = document.getElementById('commentBox');
@@ -364,4 +310,26 @@
         }
 
         function loadComments() {
-            let
+            let comments = localStorage.getItem('comments');
+            comments = comments ? JSON.parse(comments) : [];
+            const commentList = document.getElementById('commentList');
+
+            comments.forEach(comment => {
+                const commentDiv = document.createElement('div');
+                commentDiv.className = 'comment';
+                commentDiv.id = comment.id;
+                commentDiv.innerHTML = `<p>${comment.text}</p>
+                    <div class="comment-actions">
+                        <button onclick="editComment('${comment.id}')">Edit</button>
+                        <button onclick="deleteComment('${comment.id}')">Delete</button>
+                    </div>
+                    <textarea class="edit-comment-box" id="edit-${comment.id}">${comment.text}</textarea>
+                    <button class="comment-button" style="display: none;" id="save-${comment.id}" onclick="saveComment('${comment.id}')">Save</button>`;
+                commentList.appendChild(commentDiv);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', loadComments);
+    </script>
+</body>
+</html>
