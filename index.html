@@ -164,7 +164,6 @@
         }
         .status {
             font-weight: bold;
-            text-transform: capitalize;
         }
     </style>
 </head>
@@ -182,8 +181,9 @@
                 <img id="avatar" src="" alt="Avatar">
                 <h2 id="username"></h2>
                 <p>Status: <span class="status" id="status"></span></p>
+                <p id="custom-status"></p>
                 <p id="activity"></p>
-                <p>Last Active: <span id="last-active"></span></p>
+                <p id="spotify"></p>
             </div>
         </section>
         <section id="hobbies">
@@ -260,14 +260,30 @@
             const { data } = await response.json();
 
             document.getElementById("avatar").src = `https://cdn.discordapp.com/avatars/${data.discord_user.id}/${data.discord_user.avatar}.png`;
-            document.getElementById("username").innerText = `${data.discord_user.username}#${data.discord_user.discriminator}`;
-            document.getElementById("status").innerText = data.discord_status;
-            document.getElementById("activity").innerText = data.activities.length > 0 
-                ? `Currently ${data.activities[0].type === 0 ? "playing" : "doing"}: ${data.activities[0].name}` 
-                : "Not doing anything...";
-            document.getElementById("last-active").innerText = data.discord_status === "offline" 
-                ? new Date(data.last_updated).toLocaleString() 
-                : "Currently Active";
+            document.getElementById("username").innerText = data.discord_user.global_name;
+            
+            const statusElement = document.getElementById("status");
+            statusElement.innerText = data.discord_status;
+            statusElement.style.color = data.discord_status === "online" ? "limegreen" : 
+                                        data.discord_status === "idle" ? "yellow" : 
+                                        data.discord_status === "dnd" ? "red" : "gray";
+
+            const customStatus = data.activities.find(act => act.type === 4);
+            document.getElementById("custom-status").innerText = customStatus ? `💬 ${customStatus.state}` : "";
+
+            const activityElement = document.getElementById("activity");
+            const currentActivity = data.activities.find(act => act.type !== 4 && act.name !== "Spotify");
+            activityElement.innerText = currentActivity ? `🎮 ${currentActivity.name}` : "Not doing anything...";
+
+            const spotifyElement = document.getElementById("spotify");
+            if (data.listening_to_spotify) {
+                spotifyElement.innerHTML = `
+                    🎵 Listening to <b>${data.spotify.song}</b> by ${data.spotify.artist} <br>
+                    <img src="${data.spotify.album_art_url}" width="100">
+                `;
+            } else {
+                spotifyElement.innerText = "";
+            }
         }
 
         fetchDiscordData();
@@ -350,16 +366,4 @@
         function loadComments() {
             let comments = localStorage.getItem('comments');
             comments = comments ? JSON.parse(comments) : [];
-            const commentList = document.getElementById('commentList');
-
-            comments.forEach(comment => {
-                const commentDiv = document.createElement('div');
-                commentDiv.className = 'comment';
-                commentDiv.id = comment.id;
-                commentDiv.innerHTML = `<p>${comment.text}</p>
-                    <div class="comment-actions">
-                        <button onclick="editComment('${comment.id}')">Edit</button>
-                        <button onclick="deleteComment('${comment.id}')">Delete</button>
-                    </div>
-                    <textarea class="edit-comment-box" id="edit-${comment.id}">${comment.text}</textarea>
-                    <button class="comment-button" style="display: none;" id
+            const commentList = document.getElementById('
