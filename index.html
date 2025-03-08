@@ -66,6 +66,11 @@
             margin-bottom: 20px;
             border-radius: 12px;
         }
+        .toggle-buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
         .toggle-button {
             background-color: #ffffff;
             color: #000000;
@@ -76,7 +81,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 20px;
         }
         .toggle-button:hover {
             background-color: #cccccc;
@@ -94,6 +98,19 @@
             margin: 0;
             padding: 0;
         }
+        .game-icon {
+            display: block;
+            margin: 0 auto;
+            filter: invert(1) brightness(2);
+        }
+        .game-link {
+            text-align: center;
+            display: block;
+            color: #ffffff;
+            text-shadow: 0 0 10px #ffffff;
+            margin-top: 10px;
+            font-size: 1.5em;
+        }
     </style>
 </head>
 <body>
@@ -105,11 +122,16 @@
 
     <h1>About xhlazz</h1>
     <main>
-        <section id="hobbies">
-            <h2>Hobbies</h2>
-            <button class="toggle-button" onclick="toggleSection('music-section', this)">
-                Music <span class="arrow">&#x25BC;</span>
-            </button>
+        <section id="favorites">
+            <h2>Favorites</h2>
+            <div class="toggle-buttons">
+                <button class="toggle-button" onclick="toggleSection('music-section', this)">
+                    Music <span class="arrow">&#x25BC;</span>
+                </button>
+                <button class="toggle-button" onclick="toggleSection('artists-section', this)">
+                    Artists <span class="arrow">&#x25BC;</span>
+                </button>
+            </div>
             <section id="music-section">
                 <h2>My Type Of Music</h2>
                 <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/13lyjsOssHRrmGyoUZ6lSM?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
@@ -126,9 +148,6 @@
                 <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/3SJQhninUfjG9hVOeJpLyn?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
                 <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/2RtZKzu0iHB5VRsV0itmdy?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
             </section>
-            <button class="toggle-button" onclick="toggleSection('artists-section', this)">
-                Artists <span class="arrow">&#x25BC;</span>
-            </button>
             <section id="artists-section">
                 <h2>Favorite Artists</h2>
                 <iframe style="border-radius:12px" src="https://open.spotify.com/embed/artist/585mUNJeJoLyRHXH0E7nX8?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
@@ -138,7 +157,10 @@
         </section>
         <section id="games">
             <h2>Games</h2>
-            <!-- Add game content here -->
+            <a href="https://www.roblox.com/users/2774517806/profile" target="_blank">
+                <img src="https://media.discordapp.net/attachments/1114702060147974318/1348075153652711444/ztAc5th2gAAAABJRU5ErkJggg.png?ex=67ce2452&is=67ccd2d2&hm=6424e31cce4fc397e457b8ba6b00185de6569b64fc5bfc894f2d2f2ac72144cc&=" alt="Roblox" class="game-icon">
+                <span class="game-link">Roblox</span>
+            </a>
         </section>
     </main>
     <script>
