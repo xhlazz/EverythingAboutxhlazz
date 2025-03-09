@@ -1,33 +1,14 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const songsToggle = document.getElementById('songs-toggle');
-    const songsSection = document.getElementById('songs-section');
-    const arrow = songsToggle.querySelector('.arrow');
-
-    songsToggle.addEventListener('click', () => {
-        if (songsSection.classList.contains('show')) {
-            songsSection.classList.remove('show');
-            arrow.classList.remove('arrow-up');
-        } else {
-            songsSection.classList.add('show');
-            arrow.classList.add('arrow-up');
-        }
-    });
-
-    const birthDate = new Date('2010-12-08');
-    const ageElement = document.getElementById('age');
-    const birthdayInfoElement = document.getElementById('birthday-info');
-
-    const age = calculateAge(birthDate);
-    const daysUntilBirthday = calculateDaysUntilBirthday(birthDate);
-
-    ageElement.textContent = `${age} years old`;
-
-    if (daysUntilBirthday === 0) {
-        birthdayInfoElement.innerHTML = `By the way, my birthday is today! <button onclick="showBirthdayMessageForm()">Happy Birthday!</button>`;
+function toggleSection(sectionId, button) {
+    const section = document.getElementById(sectionId);
+    const arrow = button.querySelector('.arrow');
+    if (section.style.display === 'none' || section.style.display === '') {
+        section.style.display = 'block';
+        arrow.classList.add('arrow-up');
     } else {
-        birthdayInfoElement.textContent = `By the way, my birthday is in ${daysUntilBirthday} days.`;
+        section.style.display = 'none';
+        arrow.classList.remove('arrow-up');
     }
-});
+}
 
 function calculateAge(birthDate) {
     const now = new Date();
@@ -87,3 +68,20 @@ function submitBirthdayMessage() {
         document.getElementById('birthday-message').style.display = 'none';
     });
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    const birthDate = new Date('2010-12-08');
+    const ageElement = document.getElementById('age');
+    const birthdayInfoElement = document.getElementById('birthday-info');
+
+    const age = calculateAge(birthDate);
+    const daysUntilBirthday = calculateDaysUntilBirthday(birthDate);
+
+    ageElement.textContent = `${age} years old`;
+
+    if (daysUntilBirthday === 0) {
+        birthdayInfoElement.innerHTML = `By the way, my birthday is today! <button onclick="showBirthdayMessageForm()">Happy Birthday!</button>`;
+    } else {
+        birthdayInfoElement.textContent = `By the way, my birthday is in ${daysUntilBirthday} days.`;
+    }
+});
