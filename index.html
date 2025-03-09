@@ -275,12 +275,9 @@
             <textarea id="birthday-text" placeholder="Write your birthday message here..."></textarea>
             <button onclick="submitBirthdayMessage()">Submit</button>
         </div>
-        <div class="audio-controls">
-            <button class="audio-button" id="playPauseBtn">Play</button>
-            <button class="audio-button" id="changeMusicBtn">Change Song</button>
-        </div>
     </main>
     <audio id="background-audio" autoplay loop></audio>
+    <script src="script.js"></script>
     <script>
         // Toggle Section Function
         function toggleSection(sectionId, button) {
@@ -303,8 +300,6 @@
 
         // Audio Player
         const audioPlayer = document.getElementById('background-audio');
-        const playPauseBtn = document.getElementById('playPauseBtn');
-        const changeMusicBtn = document.getElementById('changeMusicBtn');
 
         const tracks = [
             "https://files.catbox.moe/x9rc7n.mp3",
@@ -326,11 +321,10 @@
         function playRandomTrack() {
             audioPlayer.src = getRandomTrack();
             audioPlayer.play();
-            playPauseBtn.textContent = 'Pause';
         }
 
-        playPauseBtn.addEventListener('click', () => {
-            if (audioPlayer.paused) {
-                audioPlayer.play();
-                playPauseBtn.textContent = 'Pause';
-            } else {
+        // Play a random track when the page loads
+        playRandomTrack();
+    </script>
+</body>
+</html>
