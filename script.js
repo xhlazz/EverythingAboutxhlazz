@@ -8,6 +8,8 @@ function toggleSection(sectionId, button) {
         section.style.display = 'none';
         arrow.classList.remove('arrow-up');
     }
+    // Prevent page from jumping to the top
+    event.preventDefault();
 }
 
 function calculateAge(birthDate) {
@@ -74,5 +76,4 @@ document.addEventListener('DOMContentLoaded', () => {
     const ageElement = document.getElementById('age');
     const birthdayInfoElement = document.getElementById('birthday-info');
 
-    const age = calculateAge(birthDate);
-    const daysUntilBirthday = calculate
+    const age = calculateAge(birthDate
