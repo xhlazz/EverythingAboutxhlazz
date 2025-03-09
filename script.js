@@ -80,4 +80,6 @@ document.addEventListener('DOMContentLoaded', () => {
     ageElement.textContent = `${age} years old`;
 
     if (daysUntilBirthday === 0) {
-        birthdayInfoElement.innerHTML = `By the way, my birthday is today! <button onclick="showBirthdayMessageForm()">Happy
+        birthdayInfoElement.innerHTML = `By the way, my birthday is today! <button onclick="showBirthdayMessageForm()">Happy Birthday!</button>`;
+    } else {
+        birthdayInfoElement.textContent = `By the way, my birthday is in ${days
