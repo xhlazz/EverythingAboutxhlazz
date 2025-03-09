@@ -162,6 +162,29 @@
             filter: brightness(0.8);
         }
 
+        .audio-controls {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .audio-button {
+            background-color: #ffffff;
+            color: #000000;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .audio-button:hover {
+            background-color: #cccccc;
+            transform: scale(1.1);
+        }
+
         @media (max-width: 768px) {
             video {
                 width: 100%;
@@ -250,7 +273,12 @@
             <textarea id="birthday-text" placeholder="Write your birthday message here..."></textarea>
             <button onclick="submitBirthdayMessage()">Submit</button>
         </div>
+        <div class="audio-controls">
+            <button class="audio-button" onclick="changeSong()">Change Song</button>
+            <button class="audio-button" onclick="stopSong()">Stop Song</button>
+        </div>
     </main>
+    <audio id="background-audio" autoplay loop></audio>
     <script src="script.js"></script>
 </body>
 </html>
