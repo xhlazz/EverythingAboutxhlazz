@@ -60,7 +60,6 @@
             border-radius: 12px;
             margin: 20px;
             background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black background */
-            display: none; /* Initially hidden */
         }
         h2, p, a {
             color: #ffffff;
@@ -170,7 +169,7 @@
             margin-top: 20px;
         }
 
-        .audio-button, #playPauseBtn, #changeMusicBtn {
+        .audio-button {
             background-color: #ffffff;
             color: #000000;
             padding: 10px 20px;
@@ -181,7 +180,7 @@
             transition: transform 0.3s, background-color 0.3s;
         }
 
-        .audio-button:hover, #playPauseBtn:hover, #changeMusicBtn:hover {
+        .audio-button:hover {
             background-color: #cccccc;
             transform: scale(1.1);
         }
@@ -275,13 +274,32 @@
             <button onclick="submitBirthdayMessage()">Submit</button>
         </div>
         <div class="audio-controls">
-            <button id="playPauseBtn">Pause</button>
-            <button id="changeMusicBtn">Change Music</button>
+            <button class="audio-button" id="playPauseBtn">Play</button>
+            <button class="audio-button" id="changeMusicBtn">Change Music</button>
         </div>
     </main>
-    <audio id="audioPlayer" src="" preload="auto" autoplay></audio>
+    <audio id="background-audio" autoplay loop></audio>
     <script>
-        const audioPlayer = document.getElementById('audioPlayer');
+        // Toggle sections
+        function toggleSection(sectionId, button) {
+            const section = document.getElementById(sectionId);
+            if (section.style.display === "none" || section.style.display === "") {
+                section.style.display = "block";
+                button.querySelector('.arrow').classList.add('arrow-up');
+            } else {
+                section.style.display = "none";
+                button.querySelector('.arrow').classList.remove('arrow-up');
+            }
+        }
+
+        // Birthday message submission
+        function submitBirthdayMessage() {
+            const message = document.getElementById('birthday-text').value;
+            alert(`Birthday message submitted: ${message}`);
+        }
+
+        // Audio player script from main.js
+        const audioPlayer = document.getElementById('background-audio');
         const playPauseBtn = document.getElementById('playPauseBtn');
         const changeMusicBtn = document.getElementById('changeMusicBtn');
 
@@ -321,18 +339,6 @@
         changeMusicBtn.addEventListener('click', () => {
             playRandomTrack();
         });
-
-        function toggleSection(sectionId, button) {
-            const section = document.getElementById(sectionId);
-            const arrow = button.querySelector('.arrow');
-            if (section.style.display === 'none' || section.style.display === '') {
-                section.style.display = 'block';
-                arrow.classList.add('arrow-up');
-            } else {
-                section.style.display = 'none';
-                arrow.classList.remove('arrow-up');
-            }
-        }
 
         // Play a random track when the page loads
         playRandomTrack();
