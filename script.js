@@ -1,35 +1,3 @@
-const musicFiles = [
-    "https://raw.githubusercontent.com/xhlazz/Everything-About-xhlazz/main/spotidownloader.com%20-%20Leni%20(Crystal%20Castles%20vs%20GoodBooks)%20-%20GoodBooks.mp3",
-    "https://raw.githubusercontent.com/xhlazz/Everything-About-xhlazz/main/spotidownloader.com%20-%20Tell%20me%20-%20novyhuman.mp3",
-    "https://raw.githubusercontent.com/xhlazz/Everything-About-xhlazz/main/spotidownloader.com%20-%20TKIEROCONMIGO%20-%20Cesarvsthewrld.mp3",
-    "https://raw.githubusercontent.com/xhlazz/Everything-About-xhlazz/main/spotidownloader.com%20-%20Sin%20Conexion%20-%20Young%20Dune.mp3",
-    "https://raw.githubusercontent.com/xhlazz/Everything-About-xhlazz/main/spotidownloader.com%20-%20Show%20Me%20How%20-%20Men%20I%20Trust.mp3"
-];
-
-let currentMusicIndex = Math.floor(Math.random() * musicFiles.length);
-const backgroundMusic = document.getElementById('background-music');
-
-backgroundMusic.src = musicFiles[currentMusicIndex];
-backgroundMusic.play();
-
-function toggleMusic() {
-    const toggleButton = document.getElementById('toggle-music');
-    if (backgroundMusic.paused) {
-        backgroundMusic.play();
-        toggleButton.innerHTML = 'Stop Music';
-    } else {
-        backgroundMusic.pause();
-        toggleButton.innerHTML = 'Play Music';
-    }
-}
-
-function changeMusic() {
-    currentMusicIndex = (currentMusicIndex + 1) % musicFiles.length;
-    backgroundMusic.src = musicFiles[currentMusicIndex];
-    backgroundMusic.play();
-    document.getElementById('toggle-music').innerHTML = 'Stop Music';
-}
-
 function toggleSection(sectionId, button) {
     const section = document.getElementById(sectionId);
     const arrow = button.querySelector('.arrow');
@@ -45,4 +13,71 @@ function toggleSection(sectionId, button) {
 function calculateAge(birthDate) {
     const now = new Date();
     const age = now.getFullYear() - birthDate.getFullYear();
-    const
+    const monthDiff = now.getMonth() - birthDate.getMonth();
+    const dayDiff = now.getDate() - birthDate.getDate();
+
+    if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
+        return age - 1;
+    }
+    return age;
+}
+
+function calculateDaysUntilBirthday(birthDate) {
+    const now = new Date();
+    const currentYear = now.getFullYear();
+    let nextBirthday = new Date(currentYear, birthDate.getMonth(), birthDate.getDate());
+
+    if (now > nextBirthday) {
+        nextBirthday = new Date(currentYear + 1, birthDate.getMonth(), birthDate.getDate());
+    }
+
+    const oneDay = 24 * 60 * 60 * 1000; // hours * minutes * seconds * milliseconds
+    const daysLeft = Math.round((nextBirthday - now) / oneDay);
+
+    return daysLeft;
+}
+
+function showBirthdayMessageForm() {
+    document.getElementById('birthday-message').style.display = 'block';
+}
+
+function submitBirthdayMessage() {
+    const webhookUrl = 'https://discord.com/api/webhooks/1323002006108901486/7Zf6tq0KdT87CBFWEhOoJ21haB-ZASRI-Ddb3n1z74HAZanYtqVRoVX_ga4WMIPfGZ51';
+    const message = document.getElementById('birthday-text').value;
+
+    fetch(webhookUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            content: message,
+        }),
+    })
+    .then(response => {
+        if (response.ok) {
+            alert('Message sent successfully!');
+        } else {
+            alert('Failed to send message.');
+        }
+        document.getElementById('birthday-message').style.display = 'none';
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Failed to send message.');
+        document.getElementById('birthday-message').style.display = 'none';
+    });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const birthDate = new Date('2010-12-08');
+    const ageElement = document.getElementById('age');
+    const birthdayInfoElement = document.getElementById('birthday-info');
+
+    const age = calculateAge(birthDate);
+    const daysUntilBirthday = calculateDaysUntilBirthday(birthDate);
+
+    ageElement.textContent = `${age} years old`;
+
+    if (daysUntilBirthday === 0) {
+        birthdayInfoElement.innerHTML = `By the way, my birthday is today! <button onclick="showBirthdayMessageForm()">Happy
