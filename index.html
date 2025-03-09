@@ -102,7 +102,7 @@
         .arrow-up {
             transform: rotate(180deg);
         }
-        #music-section, #artists-section, #basic-section, #social-media-section {
+        #music-section, #artists-section, #basic-section {
             display: none;
             border: none;
             margin: 0;
@@ -143,17 +143,23 @@
             background-color: #cccccc;
         }
 
-        .social-media-icons {
+        .social-media {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            gap: 10px;
+            justify-content: center;
+            margin-bottom: 20px;
         }
 
-        .social-media-icons img {
+        .social-media img {
             width: 50px;
             height: 50px;
+            margin: 0 10px;
             cursor: pointer;
+            border-radius: 50%;
+        }
+
+        .social-media img:hover {
+            filter: brightness(0.8);
         }
 
         @media (max-width: 768px) {
@@ -173,6 +179,17 @@
     </div>
 
     <h1>About xhlazz</h1>
+    <div class="social-media">
+        <a href="https://open.spotify.com/user/313mw2nulhhjh3g2n4rusoxcar2u?si=9mThoe9pR8qtscAfFzplcw" target="_blank">
+            <img src="https://media.discordapp.net/attachments/1255692212717752513/1335387730456088618/Logo4.png?ex=67ce20bd&is=67cccf3d&hm=486b8ab90c3b268cdbcbc6b8f96ee4926107140200be082cd64ba31bb767e986&=" alt="Spotify">
+        </a>
+        <a href="https://discord.com/users/996117984928088167" target="_blank">
+            <img src="https://media.discordapp.net/attachments/1255692212717752513/1335387733018808322/Logo3.png?ex=67ce20bd&is=67cccf3d&hm=eef7587f744ab1fb84c4f89f3e9f317ebb1d0488fdc643b3124a72b89465d0ec&=" alt="Discord">
+        </a>
+        <a href="https://tiktok.com/@xhlazz" target="_blank">
+            <img src="https://media.discordapp.net/attachments/1255692212717752513/1335387731576098921/Logo8.png?ex=67ce20bd&is=67cccf3d&hm=d08dca7ce50673f7b8f5c2d4afbc5f8e42e9f449a2a3b8f375c1e870c299d34c&=" alt="TikTok">
+        </a>
+    </div>
     <main>
         <section id="favorites">
             <h2>Favorites</h2>
@@ -185,9 +202,6 @@
                 </button>
                 <button class="toggle-button" onclick="toggleSection('basic-section', this)">
                     Basic <span class="arrow">&#x25BC;</span>
-                </button>
-                <button class="toggle-button" onclick="toggleSection('social-media-section', this)">
-                    Social Media <span class="arrow">&#x25BC;</span>
                 </button>
             </div>
             <section id="music-section">
@@ -222,20 +236,6 @@
                     <a href="https://discord.com/users/996117984928088167" target="_blank">Discord (click me)</a><br>
                     <a href="https://www.roblox.com/users/2774517806/profile" target="_blank">Roblox (click me)</a>
                 </p>
-            </section>
-            <section id="social-media-section">
-                <h2>Social Media</h2>
-                <div class="social-media-icons">
-                    <a href="https://open.spotify.com/user/313mw2nulhhjh3g2n4rusoxcar2u?si=9mThoe9pR8qtscAfFzplcw" target="_blank">
-                        <img src="https://media.discordapp.net/attachments/1255692212717752513/1335387730456088618/Logo4.png?ex=67ce20bd&is=67cccf3d&hm=486b8ab90c3b268cdbcbc6b8f96ee4926107140200be082cd64ba31bb767e986&=" alt="Spotify">
-                    </a>
-                    <a href="https://discord.com/users/996117984928088167" target="_blank">
-                        <img src="https://media.discordapp.net/attachments/1255692212717752513/1335387733018808322/Logo3.png?ex=67ce20bd&is=67cccf3d&hm=eef7587f744ab1fb84c4f89f3e9f317ebb1d0488fdc643b3124a72b89465d0ec&=" alt="Discord">
-                    </a>
-                    <a href="https://tiktok.com/@xhlazz" target="_blank">
-                        <img src="https://media.discordapp.net/attachments/1255692212717752513/1335387731576098921/Logo8.png?ex=67ce20bd&is=67cccf3d&hm=d08dca7ce50673f7b8f5c2d4afbc5f8e42e9f449a2a3b8f375c1e870c299d34c&=" alt="TikTok">
-                    </a>
-                </div>
             </section>
         </section>
         <section id="description">
