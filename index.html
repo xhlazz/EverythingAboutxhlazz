@@ -18,7 +18,7 @@
             position: relative;
         }
         ::selection {
-            background: #ffffff;
+            background-color: #ffffff;
             color: #000000;
         }
         #video-background {
@@ -54,19 +54,12 @@
             color: #ffffff;
             text-shadow: 0 0 10px #ffffff;
         }
-        main {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-        }
-        section {
+        main, section {
             padding: 20px;
             border: 2px solid #ffffff;
             border-radius: 12px;
             margin: 20px;
             background-color: rgba(0, 0, 0, 0.7);
-            flex: 1 1 calc(50% - 40px);
-            box-sizing: border-box;
         }
         h2, p, a {
             color: #ffffff;
@@ -150,16 +143,22 @@
             background-color: #cccccc;
         }
 
-        .social-media {
+        .social-media-icons {
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            gap: 10px;
+            justify-content: center;
         }
-        .social-media img {
+
+        .social-media-icons img {
             width: 50px;
             height: 50px;
-            margin: 10px;
-            filter: invert(1);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .social-media-icons img:hover {
+            transform: scale(1.1);
         }
 
         @media (max-width: 768px) {
@@ -167,9 +166,6 @@
                 width: 100%;
                 height: auto;
                 object-fit: cover;
-            }
-            section {
-                flex: 1 1 100%;
             }
         }
     </style>
@@ -240,7 +236,7 @@
         </section>
         <section id="social-media">
             <h2>Social Media</h2>
-            <div class="social-media">
+            <div class="social-media-icons">
                 <a href="https://open.spotify.com/user/313mw2nulhhjh3g2n4rusoxcar2u?si=9mThoe9pR8qtscAfFzplcw" target="_blank">
                     <img src="https://media.discordapp.net/attachments/1255692212717752513/1335387730456088618/Logo4.png?ex=67ce20bd&is=67cccf3d&hm=486b8ab90c3b268cdbcbc6b8f96ee4926107140200be082cd64ba31bb767e986&=" alt="Spotify">
                 </a>
