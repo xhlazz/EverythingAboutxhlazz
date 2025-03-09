@@ -180,13 +180,13 @@
         <section id="favorites">
             <h2>Favorites</h2>
             <div class="toggle-buttons">
-                <button class="toggle-button" onclick="toggleSection('music-section', this)">
+                <button class="toggle-button" data-section="music-section">
                     Music <span class="arrow">&#x25BC;</span>
                 </button>
-                <button class="toggle-button" onclick="toggleSection('artists-section', this)">
+                <button class="toggle-button" data-section="artists-section">
                     Artists <span class="arrow">&#x25BC;</span>
                 </button>
-                <button class="toggle-button" onclick="toggleSection('basic-section', this)">
+                <button class="toggle-button" data-section="basic-section">
                     Basic <span class="arrow">&#x25BC;</span>
                 </button>
             </div>
@@ -248,7 +248,7 @@
         </section>
         <div id="birthday-message">
             <textarea id="birthday-text" placeholder="Write your birthday message here..."></textarea>
-            <button onclick="submitBirthdayMessage()">Submit</button>
+            <button id="submit-birthday-message">Submit</button>
         </div>
     </main>
     <script src="script.js"></script>
