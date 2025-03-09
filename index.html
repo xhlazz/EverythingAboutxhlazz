@@ -274,34 +274,13 @@
             <button onclick="submitBirthdayMessage()">Submit</button>
         </div>
         <div class="audio-controls">
-            <button class="audio-button" id="playPauseBtn">Play</button>
-            <button class="audio-button" id="changeMusicBtn">Change Music</button>
+            <button class="audio-button" onclick="changeSong()">Change Song</button>
+            <button class="audio-button" onclick="stopSong()">Stop Song</button>
         </div>
     </main>
     <audio id="background-audio" autoplay loop></audio>
     <script>
-        // Toggle sections
-        function toggleSection(sectionId, button) {
-            const section = document.getElementById(sectionId);
-            if (section.style.display === "none" || section.style.display === "") {
-                section.style.display = "block";
-                button.querySelector('.arrow').classList.add('arrow-up');
-            } else {
-                section.style.display = "none";
-                button.querySelector('.arrow').classList.remove('arrow-up');
-            }
-        }
-
-        // Birthday message submission
-        function submitBirthdayMessage() {
-            const message = document.getElementById('birthday-text').value;
-            alert(`Birthday message submitted: ${message}`);
-        }
-
-        // Audio player script from main.js
         const audioPlayer = document.getElementById('background-audio');
-        const playPauseBtn = document.getElementById('playPauseBtn');
-        const changeMusicBtn = document.getElementById('changeMusicBtn');
 
         const tracks = [
             "https://files.catbox.moe/x9rc7n.mp3",
@@ -323,24 +302,21 @@
         function playRandomTrack() {
             audioPlayer.src = getRandomTrack();
             audioPlayer.play();
-            playPauseBtn.textContent = 'Pause';
         }
 
-        playPauseBtn.addEventListener('click', () => {
-            if (audioPlayer.paused) {
-                audioPlayer.play();
-                playPauseBtn.textContent = 'Pause';
-            } else {
-                audioPlayer.pause();
-                playPauseBtn.textContent = 'Play';
-            }
-        });
-
-        changeMusicBtn.addEventListener('click', () => {
+        function changeSong() {
             playRandomTrack();
-        });
+        }
+
+        function stopSong() {
+            audioPlayer.pause();
+            audioPlayer.src = "";
+        }
+
+        audioPlayer.addEventListener('ended', playRandomTrack);
 
         // Play a random track when the page loads
         playRandomTrack();
-
-        // Play another random track when the current one
+    </script>
+</body>
+</html>
