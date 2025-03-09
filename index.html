@@ -265,10 +265,7 @@
         </section>
         <section id="description">
             <h2>Description About xhlazz</h2>
-            <p>
-                Hello, you might have clicked on this website for pure curiosity. But might as well be reading this for curiosity too, I'm someone who is normally social online and IRL but this isn't anything or a lot about me right? You can probably tell that I'm just as well 
-                <span id="age"></span> and doesn't have anything to say or talk about.
-            </p>
+            <p id="description-text"></p>
             <p id="birthday-info"></p>
         </section>
         <div id="birthday-message">
@@ -325,6 +322,24 @@
 
         // Play a random track when the page loads
         playRandomTrack();
-    </script>
-</body>
-</html>
+
+        // Calculate the age and days until next birthday
+        function calculateAgeAndDays() {
+            const birthday = new Date('2010-12-08');
+            const now = new Date();
+            const nextBirthday = new Date(now.getFullYear(), 11, 8); // December 8 of current year
+
+            if (now > nextBirthday) {
+                nextBirthday.setFullYear(now.getFullYear() + 1);
+            }
+
+            const age = now.getFullYear() - birthday.getFullYear();
+            const daysUntilBirthday = Math.ceil((nextBirthday - now) / (1000 * 60 * 60 * 24));
+
+            return { age, daysUntilBirthday };
+        }
+
+        const { age, daysUntilBirthday } = calculateAgeAndDays();
+
+        // Update the description text
+        document.getElementById('description-text').textContent = `Hello, you might have clicked on this website for pure curiosity. But might as well be reading this for curiosity too, I'm someone who is normally social online and IRL but this isn't anything or a lot
