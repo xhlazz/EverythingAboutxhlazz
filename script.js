@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     toggleButtons.forEach(button => {
         button.addEventListener('click', () => {
-            const sectionId = button.getAttribute('onclick').match(/'([^']+)'/)[1];
+            const sectionId = button.getAttribute('data-section');
             toggleSection(sectionId, button);
         });
     });
@@ -32,7 +32,8 @@ document.addEventListener('DOMContentLoaded', () => {
     ageElement.textContent = `${age} years old`;
     
     if (daysUntilBirthday === 0) {
-        birthdayInfoElement.innerHTML = `By the way, my birthday is today! <button onclick="showBirthdayMessageForm()">Happy Birthday!</button>`;
+        birthdayInfoElement.innerHTML = `By the way, my birthday is today! <button id="happy-birthday-button">Happy Birthday!</button>`;
+        document.getElementById('happy-birthday-button').addEventListener('click', showBirthdayMessageForm);
     } else {
         birthdayInfoElement.textContent = `By the way, my birthday is in ${daysUntilBirthday} days.`;
     }
@@ -51,4 +52,5 @@ document.addEventListener('DOMContentLoaded', () => {
     
     function calculateDaysUntilBirthday(birthDate) {
         const now = new Date();
-        const currentYear = now.getFull
+        const currentYear = now.getFullYear();
+        let
