@@ -50,12 +50,4 @@ function submitBirthdayMessage() {
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-            content: message,
-        }),
-    })
-    .then(response => {
-        if (response.ok) {
-            alert('Message sent successfully!');
-        } else {
-            alert('Failed to
+       
