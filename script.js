@@ -49,20 +49,4 @@ function calculateDaysUntilBirthday(birthDate) {
     const currentYear = now.getFullYear();
     let nextBirthday = new Date(currentYear, birthDate.getMonth(), birthDate.getDate());
 
-    if (now > nextBirthday) {
-        nextBirthday = new Date(currentYear + 1, birthDate.getMonth(), birthDate.getDate());
-    }
-
-    const oneDay = 24 * 60 * 60 * 1000; // hours * minutes * seconds * milliseconds
-    const daysLeft = Math.round((nextBirthday - now) / oneDay);
-
-    return daysLeft;
-}
-
-function showBirthdayMessageForm() {
-    document.getElementById('birthday-message').style.display = 'block';
-}
-
-function submitBirthdayMessage() {
-    const webhookUrl = 'https://discord.com/api/webhooks/1323002006108901486/7Zf6tq0KdT87CBFWEhOoJ21haB-ZASRI-Ddb3n1z74HAZanYtqVRoVX_ga4WMIPfGZ51';
-    const message = document.getElementById('birthday-text').value
+    if (
