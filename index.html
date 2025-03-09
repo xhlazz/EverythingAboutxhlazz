@@ -16,7 +16,6 @@
             margin: 0;
             padding: 0;
             position: relative;
-            cursor: url('https://media.discordapp.net/attachments/1114702060147974318/1348102137598709790/16bc3f61-dd2e-4a80-967a-ea43b14fe92b.png?ex=67ce3d74&is=67ccebf4&hm=d9e571790e34b4e76560b4f76802ebf484cce3a251205f522a4d27cd8fce0e58&=') 4 4, auto;
         }
         ::selection {
             background: #ffffff;
@@ -103,15 +102,13 @@
         .arrow-up {
             transform: rotate(180deg);
         }
-        #songs-section {
+        #music-section, #artists-section, #basic-section {
             display: none;
-            opacity: 0;
-            transition: opacity 0.5s ease-out;
+            border: none;
+            margin: 0;
+            padding: 0;
         }
-        #songs-section.show {
-            display: block;
-            opacity: 1;
-        }
+
         #birthday-message {
             display: none;
             max-width: 600px;
@@ -148,15 +145,19 @@
 
         .social-media {
             display: flex;
+            gap: 10px;
             justify-content: center;
-            gap: 20px;
-            margin-top: 20px;
+            margin: 20px 0;
         }
 
         .social-media img {
             width: 50px;
             height: 50px;
-            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .social-media img:hover {
+            transform: scale(1.1);
         }
 
         @media (max-width: 768px) {
@@ -179,11 +180,19 @@
     <main>
         <section id="favorites">
             <h2>Favorites</h2>
-            <button class="toggle-button" id="songs-toggle">
-                Songs <span class="arrow">&#x25BC;</span>
-            </button>
-            <section id="songs-section">
-                <h2>My favorite's</h2>
+            <div class="toggle-buttons">
+                <button class="toggle-button" onclick="toggleSection('music-section', this)">
+                    Music <span class="arrow">&#x25BC;</span>
+                </button>
+                <button class="toggle-button" onclick="toggleSection('artists-section', this)">
+                    Artists <span class="arrow">&#x25BC;</span>
+                </button>
+                <button class="toggle-button" onclick="toggleSection('basic-section', this)">
+                    Basic <span class="arrow">&#x25BC;</span>
+                </button>
+            </div>
+            <section id="music-section">
+                <h2>My Type Of Music</h2>
                 <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/13lyjsOssHRrmGyoUZ6lSM?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
                 <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/75IQVo8hqI1iwVZyvkN2VT?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
                 <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/1KdVrXbCry9RJaIFylT8CY?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
@@ -198,6 +207,23 @@
                 <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/3SJQhninUfjG9hVOeJpLyn?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
                 <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/2RtZKzu0iHB5VRsV0itmdy?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
             </section>
+            <section id="artists-section">
+                <h2>Favorite Artists</h2>
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/artist/585mUNJeJoLyRHXH0E7nX8?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/artist/0EKvKtaSHhGT2Sppi8qZLS?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/artist/2O6WxYXVduRSokMq8JHHkT?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </section>
+            <section id="basic-section">
+                <h2>Basic Information</h2>
+                <p>Favorite colors: Blue, Black, White</p>
+                <p>Favorite platform: Discord</p>
+                <p>Hobby: Create Roblox games</p>
+                <p>What's my Roblox and Discord?</p>
+                <p>
+                    <a href="https://discord.com/users/996117984928088167" target="_blank">Discord (click me)</a><br>
+                    <a href="https://www.roblox.com/users/2774517806/profile" target="_blank">Roblox (click me)</a>
+                </p>
+            </section>
         </section>
         <section id="description">
             <h2>Description About xhlazz</h2>
@@ -207,17 +233,19 @@
             </p>
             <p id="birthday-info"></p>
         </section>
-        <section id="social-media" class="social-media">
+        <section id="social-media">
             <h2>Social Media</h2>
-            <a href="https://open.spotify.com/user/313mw2nulhhjh3g2n4rusoxcar2u?si=9mThoe9pR8qtscAfFzplcw" target="_blank">
-                <img src="https://media.discordapp.net/attachments/1255692212717752513/1335387730456088618/Logo4.png?ex=67ce20bd&is=67cccf3d&hm=486b8ab90c3b268cdbcbc6b8f96ee4926107140200be082cd64ba31bb767e986&=" alt="Spotify">
-            </a>
-            <a href="https://discord.com/users/996117984928088167" target="_blank">
-                <img src="https://media.discordapp.net/attachments/1255692212717752513/1335387733018808322/Logo3.png?ex=67ce20bd&is=67cccf3d&hm=eef7587f744ab1fb84c4f89f3e9f317ebb1d0488fdc643b3124a72b89465d0ec&=" alt="Discord">
-            </a>
-            <a href="https://tiktok.com/@xhlazz" target="_blank">
-                <img src="https://media.discordapp.net/attachments/1255692212717752513/1335387731576098921/Logo8.png?ex=67ce20bd&is=67cccf3d&hm=d08dca7ce50673f7b8f5c2d4afbc5f8e42e9f449a2a3b8f375c1e870c299d34c&=" alt="TikTok">
-            </a>
+            <div class="social-media">
+                <a href="https://open.spotify.com/user/313mw2nulhhjh3g2n4rusoxcar2u?si=9mThoe9pR8qtscAfFzplcw" target="_blank">
+                    <img src="https://media.discordapp.net/attachments/1255692212717752513/1335387730456088618/Logo4.png?ex=67ce20bd&is=67cccf3d&hm=486b8ab90c3b268cdbcbc6b8f96ee4926107140200be082cd64ba31bb767e986&=" alt="Spotify">
+                </a>
+                <a href="https://discord.com/users/996117984928088167" target="_blank">
+                    <img src="https://media.discordapp.net/attachments/1255692212717752513/1335387733018808322/Logo3.png?ex=67ce20bd&is=67cccf3d&hm=eef7587f744ab1fb84c4f89f3e9f317ebb1d0488fdc643b3124a72b89465d0ec&=" alt="Discord">
+                </a>
+                <a href="https://tiktok.com/@xhlazz" target="_blank">
+                    <img src="https://media.discordapp.net/attachments/1255692212717752513/1335387731576098921/Logo8.png?ex=67ce20bd&is=67cccf3d&hm=d08dca7ce50673f7b8f5c2d4afbc5f8e42e9f449a2a3b8f375c1e870c299d34c&=" alt="TikTok">
+                </a>
+            </div>
         </section>
         <div id="birthday-message">
             <textarea id="birthday-text" placeholder="Write your birthday message here..."></textarea>
