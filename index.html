@@ -160,6 +160,28 @@
             transform: scale(1.1);
         }
 
+        .music-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .music-buttons button {
+            background-color: #ffffff;
+            color: #000000;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        .music-buttons button:hover {
+            background-color: #cccccc;
+        }
+
         @media (max-width: 768px) {
             video {
                 width: 100%;
@@ -251,7 +273,12 @@
             <textarea id="birthday-text" placeholder="Write your birthday message here..."></textarea>
             <button onclick="submitBirthdayMessage()">Submit</button>
         </div>
+        <div class="music-buttons">
+            <button id="toggle-music" onclick="toggleMusic()">Stop Music &#9658;</button>
+            <button onclick="changeMusic()">Change Music &#8635;</button>
+        </div>
     </main>
+    <audio id="background-music"></audio>
     <script src="script.js"></script>
 </body>
 </html>
