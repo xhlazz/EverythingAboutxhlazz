@@ -160,25 +160,23 @@
             transform: scale(1.1);
         }
 
-        .music-buttons {
+        #music-controls {
             display: flex;
-            justify-content: center;
             gap: 10px;
+            justify-content: center;
             margin-top: 20px;
         }
 
-        .music-buttons button {
+        #music-controls button {
             background-color: #ffffff;
             color: #000000;
             padding: 10px 20px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            display: flex;
-            align-items: center;
         }
 
-        .music-buttons button:hover {
+        #music-controls button:hover {
             background-color: #cccccc;
         }
 
@@ -269,16 +267,16 @@
                 </a>
             </div>
         </section>
+        <section id="music-controls">
+            <button id="toggle-music" onclick="toggleMusic()">Stop Music</button>
+            <button onclick="changeMusic()">Change Music</button>
+        </section>
         <div id="birthday-message">
             <textarea id="birthday-text" placeholder="Write your birthday message here..."></textarea>
             <button onclick="submitBirthdayMessage()">Submit</button>
         </div>
-        <div class="music-buttons">
-            <button id="toggle-music" onclick="toggleMusic()">Stop Music &#9658;</button>
-            <button onclick="changeMusic()">Change Music &#8635;</button>
-        </div>
     </main>
-    <audio id="background-music"></audio>
+    <audio id="background-music" loop></audio>
     <script src="script.js"></script>
 </body>
 </html>
