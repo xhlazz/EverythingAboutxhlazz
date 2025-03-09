@@ -54,12 +54,19 @@
             color: #ffffff;
             text-shadow: 0 0 10px #ffffff;
         }
-        main, section {
+        main {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        section {
             padding: 20px;
             border: 2px solid #ffffff;
             border-radius: 12px;
             margin: 20px;
             background-color: rgba(0, 0, 0, 0.7);
+            flex: 1 1 calc(50% - 40px);
+            box-sizing: border-box;
         }
         h2, p, a {
             color: #ffffff;
@@ -145,39 +152,14 @@
 
         .social-media {
             display: flex;
-            gap: 10px;
-            justify-content: center;
-            margin: 20px 0;
+            flex-direction: column;
+            align-items: center;
         }
-
         .social-media img {
             width: 50px;
             height: 50px;
-            transition: transform 0.3s;
-        }
-
-        .social-media img:hover {
-            transform: scale(1.1);
-        }
-
-        #music-controls {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-            margin-top: 20px;
-        }
-
-        #music-controls button {
-            background-color: #ffffff;
-            color: #000000;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        #music-controls button:hover {
-            background-color: #cccccc;
+            margin: 10px;
+            filter: invert(1);
         }
 
         @media (max-width: 768px) {
@@ -185,6 +167,9 @@
                 width: 100%;
                 height: auto;
                 object-fit: cover;
+            }
+            section {
+                flex: 1 1 100%;
             }
         }
     </style>
@@ -267,16 +252,11 @@
                 </a>
             </div>
         </section>
-        <section id="music-controls">
-            <button id="toggle-music" onclick="toggleMusic()">Stop Music</button>
-            <button onclick="changeMusic()">Change Music</button>
-        </section>
         <div id="birthday-message">
             <textarea id="birthday-text" placeholder="Write your birthday message here..."></textarea>
             <button onclick="submitBirthdayMessage()">Submit</button>
         </div>
     </main>
-    <audio id="background-music" loop></audio>
     <script src="script.js"></script>
 </body>
 </html>
