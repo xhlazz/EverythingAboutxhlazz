@@ -156,11 +156,11 @@
             margin: 0 10px;
             cursor: pointer;
             border-radius: 50%;
-            transition: transform 0.3s ease, filter 0.3s ease;
+            transition: transform 0.3s, filter 0.3s;
         }
 
         .social-media img:hover {
-            transform: scale(1.2);
+            transform: scale(1.1);
             filter: brightness(0.8);
         }
 
@@ -281,7 +281,28 @@
         </div>
     </main>
     <audio id="background-audio" autoplay loop></audio>
+    <script src="script.js"></script>
     <script>
+        // Toggle Section Function
+        function toggleSection(sectionId, button) {
+            const section = document.getElementById(sectionId);
+            const arrow = button.querySelector('.arrow');
+            if (section.style.display === 'none' || section.style.display === '') {
+                section.style.display = 'block';
+                arrow.classList.add('arrow-up');
+            } else {
+                section.style.display = 'none';
+                arrow.classList.remove('arrow-up');
+            }
+        }
+
+        // Birthday Message Submission
+        function submitBirthdayMessage() {
+            const message = document.getElementById('birthday-text').value;
+            alert('Birthday message submitted: ' + message);
+        }
+
+        // Audio Player
         const audioPlayer = document.getElementById('background-audio');
         const playPauseBtn = document.getElementById('playPauseBtn');
         const changeMusicBtn = document.getElementById('changeMusicBtn');
@@ -324,7 +345,3 @@
         });
 
         // Play a random track when the page loads
-        playRandomTrack();
-    </script>
-</body>
-</html>
