@@ -58,21 +58,4 @@ function submitBirthdayMessage() {
         if (response.ok) {
             alert('Message sent successfully!');
         } else {
-            alert('Failed to send message.');
-        }
-        document.getElementById('birthday-message').style.display = 'none';
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert('Failed to send message.');
-        document.getElementById('birthday-message').style.display = 'none';
-    });
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    const birthDate = new Date('2010-12-08');
-    const ageElement = document.getElementById('age');
-    const birthdayInfoElement = document.getElementById('birthday-info');
-
-    const age = calculateAge(birthDate);
-    const daysUntil
+            alert('Failed to
