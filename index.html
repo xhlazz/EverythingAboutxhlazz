@@ -105,11 +105,13 @@
         }
         #music-section, #artists-section, #basic-section {
             display: none;
-            border: none;
-            margin: 0;
-            padding: 0;
+            opacity: 0;
+            transition: opacity 0.5s ease-out;
         }
-
+        #music-section.show, #artists-section.show, #basic-section.show {
+            display: block;
+            opacity: 1;
+        }
         #birthday-message {
             display: none;
             max-width: 600px;
