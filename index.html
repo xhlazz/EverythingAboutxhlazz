@@ -102,7 +102,7 @@
         .arrow-up {
             transform: rotate(180deg);
         }
-        #music-section, #artists-section, #basic-section, #anime-section, #movies-section {
+        #music-section, #artists-section, #basic-section {
             display: none;
             border: none;
             margin: 0;
@@ -263,7 +263,7 @@
                 </p>
             </section>
         </section>
-        <section id="anime-section">
+        <section id="anime">
             <h2>Favorite Animes</h2>
             <ul>
                 <li>Naruto</li>
@@ -273,7 +273,7 @@
                 <li>Dragon Ball Z</li>
             </ul>
         </section>
-        <section id="movies-section">
+        <section id="movies">
             <h2>Favorite Movies</h2>
             <ul>
                 <li>Inception</li>
@@ -340,4 +340,7 @@
 
         function playRandomTrack() {
             audioPlayer.src = getRandomTrack();
-            audio
+            audioPlayer.play();
+        }
+
+        // Play a random track when the page
