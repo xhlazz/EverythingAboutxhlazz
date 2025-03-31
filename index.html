@@ -228,12 +228,6 @@
                 <button class="toggle-button" onclick="toggleSection('basic-section', this)">
                     Basic <span class="arrow">&#x25BC;</span>
                 </button>
-                <button class="toggle-button" onclick="toggleSection('anime-section', this)">
-                    Favorite Animes <span class="arrow">&#x25BC;</span>
-                </button>
-                <button class="toggle-button" onclick="toggleSection('movies-section', this)">
-                    Favorite Movies <span class="arrow">&#x25BC;</span>
-                </button>
             </div>
             <section id="music-section">
                 <h2>My Type Of Music</h2>
@@ -268,26 +262,26 @@
                     <a href="https://www.roblox.com/users/2774517806/profile" target="_blank">Roblox (click me)</a>
                 </p>
             </section>
-            <section id="anime-section">
-                <h2>Favorite Animes</h2>
-                <ul>
-                    <li>Naruto</li>
-                    <li>One Piece</li>
-                    <li>Attack on Titan</li>
-                    <li>My Hero Academia</li>
-                    <li>Dragon Ball Z</li>
-                </ul>
-            </section>
-            <section id="movies-section">
-                <h2>Favorite Movies</h2>
-                <ul>
-                    <li>Inception</li>
-                    <li>The Dark Knight</li>
-                    <li>Interstellar</li>
-                    <li>Avengers: Endgame</li>
-                    <li>The Matrix</li>
-                </ul>
-            </section>
+        </section>
+        <section id="anime-section">
+            <h2>Favorite Animes</h2>
+            <ul>
+                <li>Naruto</li>
+                <li>One Piece</li>
+                <li>Attack on Titan</li>
+                <li>My Hero Academia</li>
+                <li>Dragon Ball Z</li>
+            </ul>
+        </section>
+        <section id="movies-section">
+            <h2>Favorite Movies</h2>
+            <ul>
+                <li>Inception</li>
+                <li>The Dark Knight</li>
+                <li>Interstellar</li>
+                <li>Avengers: Endgame</li>
+                <li>The Matrix</li>
+            </ul>
         </section>
         <section id="description">
             <h2>Description About xhlazz</h2>
@@ -309,7 +303,7 @@
         function toggleSection(sectionId, button) {
             const section = document.getElementById(sectionId);
             const arrow = button.querySelector('.arrow');
-            if (section.style.display === 'none' || section style.display === '') {
+            if (section.style.display === 'none' || section.style.display === '') {
                 section.style.display = 'block';
                 arrow.classList.add('arrow-up');
             } else {
@@ -336,4 +330,14 @@
             "https://files.catbox.moe/zjcppg.mp3",
             "https://files.catbox.moe/pdugga.mp3",
             "https://files.catbox.moe/so1i3m.mp3",
-           
+            "https://files.catbox.moe/4x7t1d.mp3"
+        ];
+
+        function getRandomTrack() {
+            const randomIndex = Math.floor(Math.random() * tracks.length);
+            return tracks[randomIndex];
+        }
+
+        function playRandomTrack() {
+            audioPlayer.src = getRandomTrack();
+            audio
