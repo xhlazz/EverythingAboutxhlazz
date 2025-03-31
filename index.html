@@ -102,7 +102,7 @@
         .arrow-up {
             transform: rotate(180deg);
         }
-        #music-section, #artists-section, #basic-section {
+        #music-section, #artists-section, #basic-section, #anime-section, #movies-section {
             display: none;
             border: none;
             margin: 0;
@@ -228,6 +228,12 @@
                 <button class="toggle-button" onclick="toggleSection('basic-section', this)">
                     Basic <span class="arrow">&#x25BC;</span>
                 </button>
+                <button class="toggle-button" onclick="toggleSection('anime-section', this)">
+                    Favorite Animes <span class="arrow">&#x25BC;</span>
+                </button>
+                <button class="toggle-button" onclick="toggleSection('movies-section', this)">
+                    Favorite Movies <span class="arrow">&#x25BC;</span>
+                </button>
             </div>
             <section id="music-section">
                 <h2>My Type Of Music</h2>
@@ -261,6 +267,26 @@
                     <a href="https://discord.com/users/996117984928088167" target="_blank">Discord (click me)</a><br>
                     <a href="https://www.roblox.com/users/2774517806/profile" target="_blank">Roblox (click me)</a>
                 </p>
+            </section>
+            <section id="anime-section">
+                <h2>Favorite Animes</h2>
+                <ul>
+                    <li>Naruto</li>
+                    <li>One Piece</li>
+                    <li>Attack on Titan</li>
+                    <li>My Hero Academia</li>
+                    <li>Dragon Ball Z</li>
+                </ul>
+            </section>
+            <section id="movies-section">
+                <h2>Favorite Movies</h2>
+                <ul>
+                    <li>Inception</li>
+                    <li>The Dark Knight</li>
+                    <li>Interstellar</li>
+                    <li>Avengers: Endgame</li>
+                    <li>The Matrix</li>
+                </ul>
             </section>
         </section>
         <section id="description">
@@ -309,22 +335,4 @@
             "https://files.catbox.moe/kxbr5u.mp3",
             "https://files.catbox.moe/zjcppg.mp3",
             "https://files.catbox.moe/pdugga.mp3",
-            "https://files.catbox.moe/so1i3m.mp3",
-            "https://files.catbox.moe/4x7t1d.mp3"
-        ];
-
-        function getRandomTrack() {
-            const randomIndex = Math.floor(Math.random() * tracks.length);
-            return tracks[randomIndex];
-        }
-
-        function playRandomTrack() {
-            audioPlayer.src = getRandomTrack();
-            audioPlayer.play();
-        }
-
-        // Play a random track when the page loads
-        playRandomTrack();
-    </script>
-</body>
-</html>
+            "https://files.catbox.moe/so1i3m.mp
