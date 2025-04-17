@@ -76,8 +76,10 @@
             margin-bottom: 20px;
             border-radius: 12px;
         }
-        #songs-section {
-            display: none;
+        .toggle-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
         }
         .toggle-button {
             background-color: #ffffff;
@@ -86,10 +88,116 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .toggle-button:hover {
             background-color: #cccccc;
+        }
+        .arrow {
+            margin-left: 10px;
+            transition: transform 0.3s;
+        }
+        .arrow-up {
+            transform: rotate(180deg);
+        }
+        #music-section, #artists-section, #basic-section, #anime-section, #movies-section {
+            display: none;
+            border: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        #birthday-message {
+            display: none;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 2px solid #ffffff;
+            border-radius: 12px;
+            background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black background */
+        }
+
+        #birthday-message textarea {
+            width: 100%;
+            height: 100px;
+            font-size: 16px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #333;
+            background-color: #333;
+            color: #fff;
+        }
+
+        #birthday-message button {
+            background-color: #ffffff;
+            color: #000000;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #birthday-message button:hover {
+            background-color: #cccccc;
+        }
+
+        .social-media {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .social-media img {
+            width: 50px;
+            height: 50px;
+            margin: 0 10px;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: transform 0.3s, filter 0.3s;
+        }
+
+        .social-media img:hover {
+            transform: scale(1.1);
+            filter: brightness(0.8);
+        }
+
+        .audio-controls {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .audio-button {
+            background-color: #ffffff;
+            color: #000000;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .audio-button:hover {
+            background-color: #cccccc;
+            transform: scale(1.1);
+        }
+
+        #top-listen-section {
+            display: none;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            video {
+                width: 100%;
+                height: auto;
+                object-fit: cover;
+            }
         }
     </style>
 </head>
@@ -101,53 +209,67 @@
     </div>
 
     <h1>About xhlazz</h1>
+    <div class="social-media">
+        <a href="https://open.spotify.com/user/313mw2nulhhjh3g2n4rusoxcar2u?si=9mThoe9pR8qtscAfFzplcw" target="_blank">
+            <img src="https://media.discordapp.net/attachments/1255692212717752513/1335387730456088618/Logo4.png?ex=67ce20bd&is=67cccf3d&hm=486b8ab90c3b268cdbcbc6b8f96ee4926107140200be082cd64ba31bb767e986&=" alt="Spotify">
+        </a>
+        <a href="https://discord.com/users/996117984928088167" target="_blank">
+            <img src="https://media.discordapp.net/attachments/1255692212717752513/1335387733018808322/Logo3.png?ex=67ce20bd&is=67cccf3d&hm=eef7587f744ab1fb84c4f89f3e9f317ebb1d0488fdc643b3124a72b89465d0ec&=" alt="Discord">
+        </a>
+        <a href="https://tiktok.com/@xhlazz" target="_blank">
+            <img src="https://media.discordapp.net/attachments/1255692212717752513/1335387731576098921/Logo8.png?ex=67ce20bd&is=67cccf3d&hm=d08dca7ce50673f7b8f5c2d4afbc5f8e42e9f449a2a3b8f375c1e870c299d34c&=" alt="TikTok">
+        </a>
+    </div>
     <main>
         <section id="favorites">
             <h2>Favorites</h2>
-            <p>Music, gaming, and exploring new technologies.</p>
-        </section>
-
-        <section id="description">
-            <h2>Description About xhlazz</h2>
-            <p>
-                I'm a passionate creator who loves to build things, connect with people, and learn new skills.
-            </p>
-        </section>
-
-        <section id="what-i-do-the-most">
-            <h2>What I Do the Most</h2>
-            <p>
-                - Developing creative projects on Roblox.<br>
-                - Engaging with communities on Discord.<br>
-                - Experimenting with web design and coding.<br>
-                - Playing and discovering new games.<br>
-            </p>
-        </section>
-
-        <button class="toggle-button" onclick="toggleSongs()">What I Listen the Most</button>
-        <section id="songs-section">
-            <h2>Top 1-10 Songs</h2>
-            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/6c0gxKSYm4DxK1Zslu3aGC?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/016z46SJwcRosW9Xb8JKmF?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/131bQsFx06boOK9FmC2wVa?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/4mI1Liom50jAKPu1vx1NmH?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/1fovieeKfPGUiiuQeNpIHI?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/2CEykN7SXUKSPPD23NLOrp?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/6fcXQmgGCflH07I8ThBvuE?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/4gW9sb9atLvjzNA0BUDX71?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/3IGoCYajkjpOAK08xQENrI?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/0TwIqIQohKlCwwH6JLLo3B?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <div class="toggle-buttons">
+                <button class="toggle-button" onclick="toggleSection('music-section', this)">
+                    Music <span class="arrow">&#x25BC;</span>
+                </button>
+                <button class="toggle-button" onclick="toggleSection('artists-section', this)">
+                    Artists <span class="arrow">&#x25BC;</span>
+                </button>
+                <button class="toggle-button" onclick="toggleSection('basic-section', this)">
+                    Basic <span class="arrow">&#x25BC;</span>
+                </button>
+                <button class="toggle-button" onclick="toggleTopListenSection()">What I Listen the Most</button>
+            </div>
+            <section id="music-section">
+                <h2>My Type Of Music</h2>
+                <!-- Music iframe section -->
+            </section>
+            <section id="top-listen-section">
+                <h2>What I Listen the Most</h2>
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/6c0gxKSYm4DxK1Zslu3aGC?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/016z46SJwcRosW9Xb8JKmF?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/131bQsFx06boOK9FmC2wVa?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/4mI1Liom50jAKPu1vx1NmH?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/1fovieeKfPGUiiuQeNpIHI?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/2CEykN7SXUKSPPD23NLOrp?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/6fcXQmgGCflH07I8ThBvuE?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/4gW9sb9atLvjzNA0BUDX71?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/3IGoCYajkjpOAK08xQENrI?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/0TwIqIQohKlCwwH6JLLo3B?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </section>
         </section>
     </main>
-
     <script>
-        function toggleSongs() {
-            const songsSection = document.getElementById('songs-section');
-            if (songsSection.style.display === 'none' || songsSection.style.display === '') {
-                songsSection.style.display = 'block';
+        function toggleSection(sectionId, button) {
+            const section = document.getElementById(sectionId);
+            const arrow = button.querySelector('.arrow');
+            if (section.style.display === 'none' || section.style.display === '') {
+                section.style.display = 'block';
+                arrow.classList.add('arrow-up');
             } else {
-                songsSection.style.display = 'none';
+                section.style.display = 'none';
+                arrow.classList.remove('arrow-up');
             }
+        }
+
+        function toggleTopListenSection() {
+            const section = document.getElementById('top-listen-section');
+            section.style.display = section.style.display === 'none' || section.style.display === '' ? 'block' : 'none';
         }
     </script>
 </body>
