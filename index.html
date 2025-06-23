@@ -283,6 +283,35 @@
             <textarea id="birthday-text" placeholder="Write your birthday message here..."></textarea>
             <button onclick="submitBirthdayMessage()">Submit</button>
         </div>
+        <section id="extras-section">
+    <h2>Extras</h2>
+    <div class="extras-gallery">
+        <!-- Example Extra Item (copy and edit as needed) -->
+        <div class="extra-item">
+            <h3>Title 1</h3>
+            <p>This is the description for the first extra image.</p>
+            <img 
+                src="https://i.ibb.co/5X6m5CW/sample.jpg"
+                alt="Sample 1"
+                class="extra-image"
+                data-title="Title 1"
+                data-description="This is the description for the first extra image."
+                onclick="openLightbox(this)"
+            >
+        </div>
+        <!-- Add more .extra-item blocks as needed -->
+    </div>
+</section>
+
+<!-- Lightbox Modal (add this just before </body>) -->
+<div id="lightbox-modal" style="display:none;" onclick="closeLightbox(event)">
+    <div id="lightbox-content">
+        <span id="lightbox-close" onclick="closeLightbox(event)">&times;</span>
+        <h3 id="lightbox-title"></h3>
+        <img id="lightbox-img" src="" alt="">
+        <p id="lightbox-desc"></p>
+    </div>
+</div>
     </main>
     <audio id="background-audio" autoplay loop></audio>
     <script src="script.js"></script>
