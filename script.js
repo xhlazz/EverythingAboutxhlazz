@@ -12,12 +12,12 @@ function toggleSection(sectionId, button) {
 
 function calculateAge(birthDate) {
     const now = new Date();
-    const age = now.getFullYear() - birthDate.getFullYear();
+    let age = now.getFullYear() - birthDate.getFullYear();
     const monthDiff = now.getMonth() - birthDate.getMonth();
     const dayDiff = now.getDate() - birthDate.getDate();
 
     if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
-        return age - 1;
+        age--;
     }
     return age;
 }
@@ -27,12 +27,19 @@ function calculateDaysUntilBirthday(birthDate) {
     const currentYear = now.getFullYear();
     let nextBirthday = new Date(currentYear, birthDate.getMonth(), birthDate.getDate());
 
-    if (now > nextBirthday) {
+    // If birthday this year has passed, use next year
+    if (
+        now.getMonth() > birthDate.getMonth() ||
+        (now.getMonth() === birthDate.getMonth() && now.getDate() > birthDate.getDate())
+    ) {
         nextBirthday = new Date(currentYear + 1, birthDate.getMonth(), birthDate.getDate());
     }
 
-    const oneDay = 24 * 60 * 60 * 1000; // hours * minutes * seconds * milliseconds
-    const daysLeft = Math.round((nextBirthday - now) / oneDay);
+    // Calculate days difference
+    const oneDay = 24 * 60 * 60 * 1000;
+    // Remove hours/mins/seconds part for accurate day difference
+    const nowDateOnly = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    const daysLeft = Math.round((nextBirthday - nowDateOnly) / oneDay);
 
     return daysLeft;
 }
@@ -61,11 +68,13 @@ function submitBirthdayMessage() {
             alert('Failed to send message.');
         }
         document.getElementById('birthday-message').style.display = 'none';
+        document.getElementById('birthday-text').value = '';
     })
     .catch(error => {
         console.error('Error:', error);
         alert('Failed to send message.');
         document.getElementById('birthday-message').style.display = 'none';
+        document.getElementById('birthday-text').value = '';
     });
 }
 
@@ -73,6 +82,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const birthDate = new Date('2010-12-08');
     const ageElement = document.getElementById('age');
     const birthdayInfoElement = document.getElementById('birthday-info');
+
+    if (!ageElement || !birthdayInfoElement) {
+        // These elements must exist in the HTML!
+        return;
+    }
 
     const age = calculateAge(birthDate);
     const daysUntilBirthday = calculateDaysUntilBirthday(birthDate);
