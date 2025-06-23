@@ -98,4 +98,26 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
         birthdayInfoElement.textContent = `Oh, and in case you wonder. My birthday is in ${daysUntilBirthday} days, so please go into any of my social medias and wish me a happy birthday, even late or even too early I appreciate it♥`;
     }
+    // Lightbox functionality for Extras section
+function openLightbox(imgElem) {
+    const modal = document.getElementById('lightbox-modal');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxTitle = document.getElementById('lightbox-title');
+    const lightboxDesc = document.getElementById('lightbox-desc');
+    lightboxImg.src = imgElem.src;
+    lightboxImg.alt = imgElem.alt;
+    lightboxTitle.textContent = imgElem.dataset.title || '';
+    lightboxDesc.textContent = imgElem.dataset.description || '';
+    modal.style.display = 'flex';
+}
+
+function closeLightbox(event) {
+    // Only close if background or close button is clicked
+    if (
+        event.target.id === 'lightbox-modal' ||
+        event.target.id === 'lightbox-close'
+    ) {
+        document.getElementById('lightbox-modal').style.display = 'none';
+    }
+}
 });
