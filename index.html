@@ -286,45 +286,5 @@
     </main>
     <audio id="background-audio" autoplay loop></audio>
     <script src="script.js"></script>
-    <script>
-        // Toggle Section Function
-        function toggleSection(sectionId, button) {
-            const section = document.getElementById(sectionId);
-            const arrow = button.querySelector('.arrow');
-            if (section.style.display === 'none' || section.style.display === '') {
-                section.style.display = 'block';
-                arrow.classList.add('arrow-up');
-            } else {
-                section.style.display = 'none';
-                arrow.classList.remove('arrow-up');
-            }
-        }
-
-        // Birthday Message Submission
-        function submitBirthdayMessage() {
-            const message = document.getElementById('birthday-text').value;
-            alert('Birthday message submitted: ' + message);
-        }
-
-        // Audio Player
-        const audioPlayer = document.getElementById('background-audio');
-
-        const tracks = [
-           
-        ];
-
-        function getRandomTrack() {
-            const randomIndex = Math.floor(Math.random() * tracks.length);
-            return tracks[randomIndex];
-        }
-
-        function playRandomTrack() {
-            audioPlayer.src = getRandomTrack();
-            audioPlayer.play();
-        }
-
-        // Play a random track when the page loads
-        playRandomTrack();
-    </script>
 </body>
 </html>
