@@ -183,3 +183,90 @@ function fetchDiscordActivity() {
 // On page load and refresh every 20 seconds
 document.addEventListener('DOMContentLoaded', fetchDiscordActivity);
 setInterval(fetchDiscordActivity, 20000);
+// Error Toast functions
+function showErrorToast(message) {
+    const toast = document.getElementById("error-toast");
+    const msgSpan = document.getElementById("error-toast-message");
+    msgSpan.textContent = message;
+    toast.classList.add("show");
+    toast.style.display = "flex";
+    if (window.toastTimeout) clearTimeout(window.toastTimeout);
+    window.toastTimeout = setTimeout(() => {
+        closeErrorToast();
+    }, 7000); // 7 seconds
+}
+function closeErrorToast() {
+    const toast = document.getElementById("error-toast");
+    toast.classList.remove("show");
+    setTimeout(() => { toast.style.display = "none"; }, 350);
+}
+window.addEventListener('error', function (e) {
+    showErrorToast("An unexpected error occurred: " + (e.message || "Unknown error"));
+    return false;
+});
+window.addEventListener('unhandledrejection', function (e) {
+    showErrorToast("An unhandled promise error occurred.");
+});
+
+// Discord Live Activity
+function fetchDiscordActivity() {
+    const userId = "996117984928088167";
+    const url = `https://api.lanyard.rest/v1/users/${userId}`;
+    fetch(url)
+        .then(res => res.json())
+        .then(data => {
+            const profile = data.data;
+            const usernameSpan = document.getElementById("discord-username");
+            const avatarImg = document.getElementById("discord-avatar");
+            if (!profile || !profile.discord_user) {
+                showErrorToast("Could not fetch Discord user info. Is Lanyard bot added?");
+                document.getElementById("discord-activity").innerHTML = "<em>Status unavailable</em>";
+                usernameSpan.textContent = "(not found)";
+                avatarImg.style.display = 'none';
+                return;
+            }
+            const username = profile.discord_user.username + "#" + profile.discord_user.discriminator;
+            usernameSpan.textContent = username;
+            avatarImg.src = `https://cdn.discordapp.com/avatars/${userId}/${profile.discord_user.avatar}.png?size=128`;
+            avatarImg.style.display = 'block';
+            // Status
+            const statusSpan = document.getElementById("discord-status");
+            statusSpan.className = "status-dot";
+            switch (profile.discord_status) {
+                case "online": statusSpan.classList.add("status-online"); break;
+                case "idle": statusSpan.classList.add("status-idle"); break;
+                case "dnd": statusSpan.classList.add("status-dnd"); break;
+                default: statusSpan.classList.add("status-offline");
+            }
+            statusSpan.title = "Status: " + profile.discord_status;
+            // Activities
+            const activityDiv = document.getElementById("discord-activity");
+            let html = "";
+            if (profile.activities && profile.activities.length > 0) {
+                profile.activities.forEach(act => {
+                    if (act.type === 0) { // playing/game
+                        html += `<p>🎮 Playing <b>${act.name}</b>`;
+                        if (act.details) html += ` - ${act.details}`;
+                        if (act.state) html += ` <small>(${act.state})</small>`;
+                        html += `</p>`;
+                    } else if (act.type === 2) { // listening
+                        html += `<p>🎵 Listening to <b>${act.name}</b></p>`;
+                    } else if (act.type === 3) { // watching
+                        html += `<p>👀 Watching <b>${act.name}</b></p>`;
+                    } else if (act.type === 4 && act.state) { // custom status
+                        html += `<p>${act.emoji ? act.emoji.name + " " : ""}${act.state}</p>`;
+                    }
+                });
+            }
+            if (html === "") html = `<p>No current activity</p>`;
+            activityDiv.innerHTML = html;
+        })
+        .catch((err) => {
+            showErrorToast("Failed to fetch Discord status (maybe Lanyard bot not connected).");
+            document.getElementById("discord-username").textContent = "(error)";
+            document.getElementById("discord-avatar").style.display = "none";
+            document.getElementById("discord-activity").innerHTML = "<em>Error fetching Discord status.</em>";
+        });
+}
+document.addEventListener('DOMContentLoaded', fetchDiscordActivity);
+setInterval(fetchDiscordActivity, 20000);
