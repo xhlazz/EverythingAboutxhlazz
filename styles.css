@@ -206,6 +206,52 @@ iframe {
 }
 #lightbox-desc {
     color: #ccc;
+    /* Add at the end of your styles.css */
+
+#live-activity {
+    margin: 20px;
+    padding: 20px;
+    border: 2px solid #7289da;
+    border-radius: 12px;
+    background: rgba(114,137,218,0.09);
+    max-width: 400px;
+}
+#discord-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#discord-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 3px solid #7289da;
+    margin-bottom: 10px;
+    background: #23272a;
+}
+#discord-user-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.1em;
+    margin-bottom: 8px;
+}
+.status-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+    border: 2px solid #23272a;
+}
+.status-online { background: #43b581; }
+.status-idle { background: #faa61a; }
+.status-dnd { background: #f04747; }
+.status-offline { background: #747f8d; }
+#discord-activity {
+    text-align: center;
+    color: #fff;
+    font-size: 1em;
+}
 }
     }
 }
