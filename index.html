@@ -198,6 +198,24 @@
     </style>
 </head>
 <body>
+    
+<div id="error-toast" style="display: none;">
+  <span id="error-toast-message"></span>
+  <span id="error-toast-close" onclick="closeErrorToast()">&#10006;</span>
+</div>
+
+<!-- Place this where you want your Live Activity block (usually near the top of <main>) -->
+<section id="live-activity">
+  <h2>Live Activity</h2>
+  <div id="discord-profile">
+    <img id="discord-avatar" src="" alt="Discord Avatar" style="display:none;">
+    <div id="discord-user-info">
+      <span id="discord-username"></span>
+      <span id="discord-status" class="status-dot"></span>
+    </div>
+    <div id="discord-activity"></div>
+  </div>
+</section>
     <div id="video-background">
         <video autoplay muted loop playsinline>
             <source src="https://motionbgs.com/media/5575/black-and-white-topography.960x540.mp4" type="video/mp4">
