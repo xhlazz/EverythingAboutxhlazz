@@ -352,3 +352,87 @@ iframe {
   70% { color: #ffb6e6; filter: drop-shadow(0 0 24px #fff);}
   100% { color: #ffb6e6;}
 }
+/* Fun Experiments Section and Neon Button Styles */
+#fun-experiments {
+  margin: 36px 0 0 0;
+  padding: 32px 0 28px 0;
+  background: rgba(255,255,255,0.03);
+  border-radius: 18px;
+  box-shadow: 0 0 22px #fff1;
+  text-align: center;
+}
+.fun-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  justify-content: center;
+  margin-top: 18px;
+}
+.fun-btn {
+  font-size: 1.1em;
+  font-family: inherit;
+  background: rgba(10,10,10,0.55);
+  color: #fff;
+  border: 2.5px solid rgba(255,255,255,0.25);
+  border-radius: 20px;
+  padding: 12px 28px;
+  cursor: pointer;
+  box-shadow: 0 0 16px #fff2;
+  transition: 
+    background 0.18s,
+    color 0.18s,
+    transform 0.19s,
+    box-shadow 0.2s,
+    border-color 0.22s;
+  outline: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.fun-btn:focus,
+.fun-btn:hover,
+.fun-btn:active {
+  background: rgba(25,25,25,0.72);
+  color: #fff;
+  border-color: #fff;
+  box-shadow:
+    0 0 24px 5px #fff,
+    0 0 40px 8px #fff7,
+    0 0 5px #fff;
+  transform: scale(1.07) rotate(-2deg);
+  z-index: 1;
+}
+@media (hover: none) {
+  .fun-btn:active {
+    /* On touch devices, keep neon effect on tap */
+    border-color: #fff;
+    box-shadow:
+      0 0 24px 5px #fff,
+      0 0 40px 8px #fff7,
+      0 0 5px #fff;
+  }
+}
+
+/* Fun Experiments animation styles (unchanged from previous) */
+@keyframes spinTitleAnim {
+  0% { transform: rotate(0deg);}
+  80% { transform: rotate(360deg);}
+  100% { transform: rotate(0deg);}
+}
+.spin-title {
+  animation: spinTitleAnim 1s cubic-bezier(.21,.88,.46,1.15);
+}
+.confetti-piece {
+  position: fixed;
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  opacity: 0.85;
+  pointer-events: none;
+  z-index: 9999;
+  animation: confettiDrop 1.6s linear forwards;
+}
+@keyframes confettiDrop {
+  0% { transform: translateY(0);}
+  100% { transform: translateY(90vh) rotate(350deg);}
+}
