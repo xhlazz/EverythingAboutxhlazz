@@ -124,7 +124,6 @@ function closeLightbox(event) {
 // Fun Experiments
 
 function partyConfetti() {
-  // Simple confetti effect!
   for (let i = 0; i < 32; i++) {
     const conf = document.createElement('div');
     conf.className = 'confetti-piece';
@@ -134,7 +133,7 @@ function partyConfetti() {
     conf.style.transform = `rotate(${Math.random()*360}deg)`;
     conf.style.width = conf.style.height = `${8 + Math.random()*12}px`;
     document.body.appendChild(conf);
-    setTimeout(() => conf.remove(), 1700);
+    setTimeout(() => conf.remove(), 1550);
   }
 }
 
@@ -165,7 +164,28 @@ function surpriseAlert() {
     "Keep going! 🚀",
     "Did you drink water today? 💧",
     "Have a great day! 🌟",
-    "You found the secret button! 🎉"
+    "You found the secret button! 🎉",
+    "Fun fact: The internet weighs about 50 grams (it's true!)"
   ];
   alert(messages[Math.floor(Math.random()*messages.length)]);
+}
+
+function shakeEverything() {
+  document.body.classList.add('shake');
+  setTimeout(() => document.body.classList.remove('shake'), 600);
+}
+
+function darkLightSwitch() {
+  document.body.classList.toggle('light-mode');
+}
+
+function rainbowText() {
+  const h1 = document.querySelector('h1');
+  h1.classList.add('rainbow');
+  setTimeout(() => h1.classList.remove('rainbow'), 1800);
+}
+
+function flipSite() {
+  document.body.classList.toggle('flipped');
+  setTimeout(() => document.body.classList.remove('flipped'), 1300);
 }
