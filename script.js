@@ -121,61 +121,15 @@ function closeLightbox(event) {
     }
 }
 });
-// ...existing JS above...
-
-// -- Global View and Like Counter --
-// Uses CountAPI (https://countapi.xyz) for global counts (free, no auth needed)
-const NAMESPACE = 'everythingaboutxhlazz';
-const VIEW_KEY = 'site-views';
-const LIKE_KEY = 'site-likes';
-
-function updateViewCounter() {
-  fetch(`https://api.countapi.xyz/hit/${NAMESPACE}/${VIEW_KEY}`)
-    .then(res => res.json())
-    .then(data => {
-      document.getElementById('view-count').textContent = data.value;
-    });
-}
-
-function updateLikeCounter() {
-  fetch(`https://api.countapi.xyz/get/${NAMESPACE}/${LIKE_KEY}`)
-    .then(res => res.json())
-    .then(data => {
-      document.getElementById('like-count').textContent = data.value ?? 0;
-    });
-}
-
-function addLike() {
-  // Prevent multiple likes from the same session (very basic)
-  if (localStorage.getItem('liked_xhlazz_site')) return;
-  fetch(`https://api.countapi.xyz/hit/${NAMESPACE}/${LIKE_KEY}`)
-    .then(res => res.json())
-    .then(data => {
-      document.getElementById('like-count').textContent = data.value;
-      document.getElementById('like-btn').classList.add('liked');
-      document.getElementById('like-heart').classList.add('liked');
-      localStorage.setItem('liked_xhlazz_site', '1');
-    });
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  // ...existing DOMContentLoaded code...
-
-  // View counter
-  updateViewCounter();
-  // Like counter
-  updateLikeCounter();
-
-  // Like button event
-  document.getElementById('like-btn').addEventListener('click', () => {
-    if (!localStorage.getItem('liked_xhlazz_site')) {
-      addLike();
-    }
-  });
-
-  // If already liked, show as liked
-  if (localStorage.getItem('liked_xhlazz_site')) {
-    document.getElementById('like-btn').classList.add('liked');
-    document.getElementById('like-heart').classList.add('liked');
-  }
+<section id="global-stats-section">
+  <div class="stats-box">
+    <span class="neon-icon">👁️</span>
+    <span class="neon-text" id="view-count">...</span>
+    <span class="neon-label">people have seen this.</span>
+    <button id="like-btn" title="Like this site!">
+      <span class="neon-icon" id="like-heart">❤️</span>
+      <span class="neon-text" id="like-count">...</span>
+    </button>
+  </div>
+</section>
 });
