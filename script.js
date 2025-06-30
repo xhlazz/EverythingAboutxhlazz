@@ -121,7 +121,7 @@ function closeLightbox(event) {
     }
 }
 });
-// Fun Experiments
+// --- Fun Experiments Section ---
 
 function partyConfetti() {
   for (let i = 0; i < 32; i++) {
@@ -137,21 +137,6 @@ function partyConfetti() {
   }
 }
 
-function randomBg() {
-  const colors = [
-    'linear-gradient(135deg,#fff,#111 80%)',
-    'radial-gradient(circle at 60% 40%,#ffb6e6 0%,#6fd6ff 90%)',
-    'linear-gradient(120deg,#e6fff6 0%,#000 100%)',
-    'radial-gradient(at 80% 20%,#fff 0%,#111 100%)',
-    'linear-gradient(120deg,#fff 0%,#000 100%)'
-  ];
-  const color = colors[Math.floor(Math.random()*colors.length)];
-  document.body.style.background = color;
-  setTimeout(() => {
-    document.body.style.background = '';
-  }, 1600);
-}
-
 function spinTitle() {
   const title = document.querySelector('h1');
   title.classList.add('spin-title');
@@ -160,14 +145,56 @@ function spinTitle() {
 
 function surpriseAlert() {
   const messages = [
-    "You're awesome! 😎",
-    "Keep going! 🚀",
-    "Did you drink water today? 💧",
-    "Have a great day! 🌟",
-    "You found the secret button! 🎉",
-    "Fun fact: The internet weighs about 50 grams (it's true!)"
+    "You're awesome! 😎","Keep going! 🚀","Did you drink water today? 💧","Have a great day! 🌟","You found the secret button! 🎉",
+    "Fun fact: The internet weighs about 50 grams (it's true!)","Bananas are berries, but strawberries aren't.","Honey never spoils.",
+    "A group of flamingos is called a flamboyance.","Cats have fewer toes on their back paws.","A day on Venus is longer than its year.",
+    "There are more stars in the universe than grains of sand on Earth.","Octopuses have three hearts.","Some turtles can breathe through their butts.",
+    "Hot water freezes faster than cold water.","You can't hum while holding your nose closed.","Mosquitoes are attracted to the color blue twice as much as any other color.",
+    "The unicorn is the national animal of Scotland.","Wombat poop is cube-shaped.","The Eiffel Tower can be 15 cm taller during hot days.",
+    "Sloths can hold their breath longer than dolphins can.","The tongue of a blue whale weighs as much as an elephant.",
+    "A cloud can weigh more than a million pounds.","A group of crows is called a murder.","Butterflies taste with their feet.",
+    "Sea otters hold hands while sleeping so they don’t drift apart.","The inventor of the Frisbee was turned into a Frisbee.",
+    "The dot over a lowercase i or j is called a tittle.","Giraffes have no vocal cords.","The Twitter bird’s name is Larry.",
+    "An ostrich’s eye is bigger than its brain.","Snails can sleep for three years.","A shrimp’s heart is in its head.",
+    "Goats have rectangular pupils.","The first computer mouse was made of wood.","Kangaroos can’t walk backwards.",
+    "A group of hedgehogs is called a prickle.","There's a basketball court on the top floor of the US Supreme Court building.",
+    "Venus is the only planet that spins clockwise.","More people are allergic to cow’s milk than any other food.",
+    "Some frogs can be frozen solid then thawed and continue living.","The inventor of Pringles is buried in a Pringles can.",
+    "The original name for butterfly was flutterby.","A cow-bison hybrid is called a beefalo.","The hashtag symbol is technically called an octothorpe.",
+    "Polar bear skin is black.","Elephants are the only animals that can't jump.","A group of porcupines is called a prickle.",
+    "The heart of a shrimp is located in its head.","Peanuts aren’t nuts – they’re legumes.","The word 'nerd' was first coined by Dr. Seuss.",
+    "Banging your head against a wall burns 150 calories per hour.","The inventor of the Rubik’s Cube couldn’t solve it for a month.",
+    "The average person walks the equivalent of five times around the world in their lifetime.","The world’s largest grand piano was built by a 15-year-old in New Zealand.",
+    "The longest wedding veil was longer than 63 football fields.","Some cats are allergic to humans.","A small child could swim through the veins of a blue whale.",
+    "A group of ferrets is called a business.","A group of frogs is called an army.","Chewing gum boosts concentration.",
+    "The world’s oldest toy is a stick.","More people are bitten by New Yorkers each year than by sharks.",
+    "A hummingbird weighs less than a penny.","You can hear a blue whale’s heartbeat from two miles away.",
+    "The word 'strengths' is the longest word in the English language with only one vowel.",
+    "The inventor of Vaseline ate a spoonful of it every morning.","A snail can sleep for three years.",
+    "The world's largest snowflake was 15 inches wide.","Some lipstick contains fish scales.",
+    "An apple, potato, and onion all taste the same if you eat them with your nose plugged.",
+    "A group of jellyfish is called a smack.","There are more fake flamingos in the world than real ones.",
+    "Wearing headphones for just an hour could increase the bacteria in your ear by 700 times.",
+    "The tongue is the only muscle in one’s body that is attached from one end.",
+    "A group of unicorns is called a blessing.","The world’s tallest snowman was 113 feet tall.",
+    "The longest time between two twins being born is 87 days.",
+    "A crocodile can’t poke its tongue out.","Recycling one glass jar saves enough energy to watch TV for 3 hours.",
+    "A group of pandas is called an embarrassment.","The oldest “your mom” joke was discovered on a 3,500 year old Babylonian tablet.",
+    "Mr. Potato Head was the first toy advertised on TV.","A group of owls is called a parliament.",
+    "A group of kittens is called a kindle.","Cows moo with regional accents.","The sentence 'The quick brown fox jumps over the lazy dog' uses every letter of the alphabet.",
+    "There are 293 ways to make change for a dollar.","The inventor of the popsicle was 11 years old.",
+    "Carrots were originally purple.","You can't fold a piece of paper more than 7 times.",
+    "The Mona Lisa has no eyebrows.","The world's smallest reptile was discovered in 2021.",
+    "A group of parrots is called a pandemonium.","A group of flamingos is called a flamboyance.",
+    "The world’s largest rubber duck is over 60 feet tall.","The longest place name in the world is 85 letters long.",
+    "Ketchup was sold as medicine in the 1830s.","The word 'peacock' only refers to male peafowl.",
+    "The inventor of Coca-Cola originally wanted to invent a headache cure.",
+    "The unicorn is the national animal of Scotland. (Yes, again!)",
+    "A group of giraffes is called a tower.",
+    "There are more public libraries than McDonald's in the U.S.",
+    "No number before 1,000 contains the letter A."
   ];
-  alert(messages[Math.floor(Math.random()*messages.length)]);
+  alert(messages[Math.floor(Math.random() * messages.length)]);
 }
 
 function shakeEverything() {
@@ -188,4 +215,71 @@ function rainbowText() {
 function flipSite() {
   document.body.classList.toggle('flipped');
   setTimeout(() => document.body.classList.remove('flipped'), 1300);
+}
+
+function rainStars() {
+  for (let i = 0; i < 22; i++) {
+    const star = document.createElement('span');
+    star.className = 'rain-star';
+    star.textContent = '⭐';
+    star.style.left = `${Math.random() * 98}vw`;
+    star.style.fontSize = `${1.2 + Math.random() * 1.2}em`;
+    document.body.appendChild(star);
+    setTimeout(() => star.remove(), 1900);
+  }
+}
+
+function zoomAll() {
+  document.body.classList.add('zoomed');
+  setTimeout(() => document.body.classList.remove('zoomed'), 1400);
+}
+
+function blurEverything() {
+  document.body.classList.add('blurry');
+  setTimeout(() => document.body.classList.remove('blurry'), 1600);
+}
+
+function typewriterFact() {
+  const facts = [
+    "Did you know? Sloths can hold their breath longer than dolphins can.",
+    "Honey never spoils.",
+    "A group of flamingos is called a flamboyance.",
+    "Octopuses have three hearts.",
+    "The inventor of the Frisbee was turned into a Frisbee.",
+    "Butterflies taste with their feet.",
+    "Sea otters hold hands while sleeping.",
+    "Goats have rectangular pupils.",
+    "Kangaroos can’t walk backwards.",
+    "Wombat poop is cube-shaped.",
+    "The unicorn is the national animal of Scotland.",
+    "A group of pandas is called an embarrassment.",
+    "Cows moo with regional accents.",
+    "An ostrich’s eye is bigger than its brain.",
+    "The Mona Lisa has no eyebrows."
+  ];
+  const el = document.getElementById('typewriter-fact-output');
+  const text = facts[Math.floor(Math.random() * facts.length)];
+  let i = 0;
+  el.textContent = '';
+  function type() {
+    if (i < text.length) {
+      el.textContent += text.charAt(i);
+      i++;
+      setTimeout(type, 38);
+    }
+  }
+  type();
+}
+
+function bubbles() {
+  for (let i = 0; i < 18; i++) {
+    const bubble = document.createElement('div');
+    bubble.className = 'bubble';
+    bubble.style.left = `${Math.random() * 96}vw`;
+    bubble.style.width = bubble.style.height = `${18 + Math.random() * 28}px`;
+    bubble.style.background = `rgba(${100+Math.random()*155},${180+Math.random()*50},${200+Math.random()*55},0.4)`;
+    bubble.style.animationDuration = `${1.7 + Math.random() * 1.7}s`;
+    document.body.appendChild(bubble);
+    setTimeout(() => bubble.remove(), 2900);
+  }
 }
