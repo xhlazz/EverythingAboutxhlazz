@@ -123,7 +123,6 @@ function closeLightbox(event) {
 });
 // --- Fun Experiments Section ---
 
-// 100 fun facts/messages (same pool as Surprise Me)
 const funFactsMessages = [
   "You're awesome! 😎","Keep going! 🚀","Did you drink water today? 💧","Have a great day! 🌟","You found the secret button! 🎉",
   "Fun fact: The internet weighs about 50 grams (it's true!)","Bananas are berries, but strawberries aren't.","Honey never spoils.",
@@ -233,6 +232,7 @@ function partyConfetti() {
 
 function spinTitle() {
   const title = document.querySelector('h1');
+  if (!title) return;
   title.classList.add('spin-title');
   setTimeout(() => title.classList.remove('spin-title'), 1000);
 }
@@ -252,6 +252,7 @@ function darkLightSwitch() {
 
 function rainbowText() {
   const h1 = document.querySelector('h1');
+  if (!h1) return;
   h1.classList.add('rainbow');
   setTimeout(() => h1.classList.remove('rainbow'), 1800);
 }
