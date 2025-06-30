@@ -121,15 +121,71 @@ function closeLightbox(event) {
     }
 }
 });
-<section id="global-stats-section">
-  <div class="stats-box">
-    <span class="neon-icon">👁️</span>
-    <span class="neon-text" id="view-count">...</span>
-    <span class="neon-label">people have seen this.</span>
-    <button id="like-btn" title="Like this site!">
-      <span class="neon-icon" id="like-heart">❤️</span>
-      <span class="neon-text" id="like-count">...</span>
-    </button>
-  </div>
-</section>
+<// CountAPI (Global view and like counter)
+const NAMESPACE = 'everythingaboutxhlazz';
+const VIEW_KEY = 'site-views';
+const LIKE_KEY = 'site-likes';
+
+// Update the view count (increments by 1 on each load)
+function updateNeonViewCounter() {
+  fetch(`https://api.countapi.xyz/hit/${NAMESPACE}/${VIEW_KEY}`)
+    .then(res => res.json())
+    .then(data => {
+      document.getElementById('view-count').textContent = data.value;
+    })
+    .catch(() => {
+      document.getElementById('view-count').textContent = '⚠️';
+      console.warn('View counter failed: CountAPI may be blocked.');
+    });
+}
+
+// Get the like count (does not increment)
+function updateNeonLikeCounter() {
+  fetch(`https://api.countapi.xyz/get/${NAMESPACE}/${LIKE_KEY}`)
+    .then(res => res.json())
+    .then(data => {
+      document.getElementById('like-count').textContent = data.value ?? 0;
+    })
+    .catch(() => {
+      document.getElementById('like-count').textContent = '⚠️';
+      console.warn('Like counter failed: CountAPI may be blocked.');
+    });
+}
+
+// Add a like (increments by 1, only once per browser)
+function addNeonLike() {
+  if (localStorage.getItem('liked_xhlazz_site')) return;
+  fetch(`https://api.countapi.xyz/hit/${NAMESPACE}/${LIKE_KEY}`)
+    .then(res => res.json())
+    .then(data => {
+      document.getElementById('like-count').textContent = data.value;
+      document.getElementById('like-btn').classList.add('liked');
+      document.getElementById('like-heart').classList.add('liked');
+      localStorage.setItem('liked_xhlazz_site', '1');
+    })
+    .catch(() => {
+      alert('Like failed: CountAPI may be blocked.');
+    });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Make sure the stats section exists before binding
+  if (document.getElementById('view-count')) updateNeonViewCounter();
+  if (document.getElementById('like-count')) updateNeonLikeCounter();
+
+  let likeBtn = document.getElementById('like-btn');
+  if (likeBtn) {
+    likeBtn.addEventListener('click', () => {
+      if (!localStorage.getItem('liked_xhlazz_site')) {
+        addNeonLike();
+      }
+    });
+
+    // Show as liked if already liked
+    if (localStorage.getItem('liked_xhlazz_site')) {
+      likeBtn.classList.add('liked');
+      document.getElementById('like-heart').classList.add('liked');
+    }
+  }
+});
 });
