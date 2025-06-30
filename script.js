@@ -121,64 +121,51 @@ function closeLightbox(event) {
     }
 }
 });
-// Use apicount.vercel.app (open-source, no login, works now)
-const NAMESPACE = 'everythingaboutxhlazz';
-const VIEW_KEY = 'site-views';
-const LIKE_KEY = 'site-likes';
+// Fun Experiments
 
-function updateNeonViewCounter() {
-  fetch(`https://apicount.vercel.app/api/${NAMESPACE}/${VIEW_KEY}`)
-    .then(res => res.json())
-    .then(data => {
-      document.getElementById('view-count').textContent = data.value;
-    })
-    .catch(() => {
-      document.getElementById('view-count').textContent = '⚠️';
-    });
-}
-
-function updateNeonLikeCounter() {
-  fetch(`https://apicount.vercel.app/api/${NAMESPACE}/${LIKE_KEY}?get`)
-    .then(res => res.json())
-    .then(data => {
-      document.getElementById('like-count').textContent = data.value ?? 0;
-    })
-    .catch(() => {
-      document.getElementById('like-count').textContent = '⚠️';
-    });
-}
-
-function addNeonLike() {
-  if (localStorage.getItem('liked_xhlazz_site')) return;
-  fetch(`https://apicount.vercel.app/api/${NAMESPACE}/${LIKE_KEY}`)
-    .then(res => res.json())
-    .then(data => {
-      document.getElementById('like-count').textContent = data.value;
-      document.getElementById('like-btn').classList.add('liked');
-      document.getElementById('like-heart').classList.add('liked');
-      localStorage.setItem('liked_xhlazz_site', '1');
-    })
-    .catch(() => {
-      alert('Like failed: Counter API may be blocked.');
-    });
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  if (document.getElementById('view-count')) updateNeonViewCounter();
-  if (document.getElementById('like-count')) updateNeonLikeCounter();
-
-  let likeBtn = document.getElementById('like-btn');
-  if (likeBtn) {
-    likeBtn.addEventListener('click', () => {
-      if (!localStorage.getItem('liked_xhlazz_site')) {
-        addNeonLike();
-      }
-    });
-
-    // Show as liked if already liked
-    if (localStorage.getItem('liked_xhlazz_site')) {
-      likeBtn.classList.add('liked');
-      document.getElementById('like-heart').classList.add('liked');
-    }
+function partyConfetti() {
+  // Simple confetti effect!
+  for (let i = 0; i < 32; i++) {
+    const conf = document.createElement('div');
+    conf.className = 'confetti-piece';
+    conf.style.left = `${Math.random()*98}vw`;
+    conf.style.background = `hsl(${Math.random()*360},90%,60%)`;
+    conf.style.top = '-20px';
+    conf.style.transform = `rotate(${Math.random()*360}deg)`;
+    conf.style.width = conf.style.height = `${8 + Math.random()*12}px`;
+    document.body.appendChild(conf);
+    setTimeout(() => conf.remove(), 1700);
   }
-});
+}
+
+function randomBg() {
+  const colors = [
+    'linear-gradient(135deg,#fff,#111 80%)',
+    'radial-gradient(circle at 60% 40%,#ffb6e6 0%,#6fd6ff 90%)',
+    'linear-gradient(120deg,#e6fff6 0%,#000 100%)',
+    'radial-gradient(at 80% 20%,#fff 0%,#111 100%)',
+    'linear-gradient(120deg,#fff 0%,#000 100%)'
+  ];
+  const color = colors[Math.floor(Math.random()*colors.length)];
+  document.body.style.background = color;
+  setTimeout(() => {
+    document.body.style.background = '';
+  }, 1600);
+}
+
+function spinTitle() {
+  const title = document.querySelector('h1');
+  title.classList.add('spin-title');
+  setTimeout(() => title.classList.remove('spin-title'), 1000);
+}
+
+function surpriseAlert() {
+  const messages = [
+    "You're awesome! 😎",
+    "Keep going! 🚀",
+    "Did you drink water today? 💧",
+    "Have a great day! 🌟",
+    "You found the secret button! 🎉"
+  ];
+  alert(messages[Math.floor(Math.random()*messages.length)]);
+}
