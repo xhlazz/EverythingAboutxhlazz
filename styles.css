@@ -209,3 +209,58 @@ iframe {
 }
     }
 }
+#site-footer {
+  width: 100%;
+  background: rgba(0,0,0,0.93);
+  color: #fff;
+  text-align: center;
+  padding: 18px 0 10px 0;
+  font-size: 1.09em;
+  letter-spacing: 0.05em;
+  border-top: 2px solid #fff;
+  margin-top: 45px;
+  position: relative;
+  z-index: 20;
+  box-shadow: 0 -3px 20px #000a;
+}
+
+#site-stats {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+#like-btn {
+  margin-left: 12px;
+  font-size: 1em;
+  background: #222;
+  color: #fff;
+  border: 1px solid #fff;
+  border-radius: 20px;
+  padding: 6px 16px;
+  cursor: pointer;
+  transition: background 0.22s, color 0.22s, transform 0.13s;
+  outline: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+#like-btn:hover {
+  background: #ff5f87;
+  color: #fff;
+  transform: scale(1.08);
+}
+
+#like-btn.liked, #like-heart.liked {
+  color: #ff8cb7;
+  animation: likedFlash 0.5s;
+}
+
+@keyframes likedFlash {
+  0% { background: #ffb7e0; color: #fff; }
+  60% { background: #fff; color: #ff5f87;}
+  100% { background: none; color: #ff8cb7;}
+}
