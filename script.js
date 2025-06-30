@@ -121,41 +121,36 @@ function closeLightbox(event) {
     }
 }
 });
-<// CountAPI (Global view and like counter)
+// Use apicount.vercel.app (open-source, no login, works now)
 const NAMESPACE = 'everythingaboutxhlazz';
 const VIEW_KEY = 'site-views';
 const LIKE_KEY = 'site-likes';
 
-// Update the view count (increments by 1 on each load)
 function updateNeonViewCounter() {
-  fetch(`https://api.countapi.xyz/hit/${NAMESPACE}/${VIEW_KEY}`)
+  fetch(`https://apicount.vercel.app/api/${NAMESPACE}/${VIEW_KEY}`)
     .then(res => res.json())
     .then(data => {
       document.getElementById('view-count').textContent = data.value;
     })
     .catch(() => {
       document.getElementById('view-count').textContent = '⚠️';
-      console.warn('View counter failed: CountAPI may be blocked.');
     });
 }
 
-// Get the like count (does not increment)
 function updateNeonLikeCounter() {
-  fetch(`https://api.countapi.xyz/get/${NAMESPACE}/${LIKE_KEY}`)
+  fetch(`https://apicount.vercel.app/api/${NAMESPACE}/${LIKE_KEY}?get`)
     .then(res => res.json())
     .then(data => {
       document.getElementById('like-count').textContent = data.value ?? 0;
     })
     .catch(() => {
       document.getElementById('like-count').textContent = '⚠️';
-      console.warn('Like counter failed: CountAPI may be blocked.');
     });
 }
 
-// Add a like (increments by 1, only once per browser)
 function addNeonLike() {
   if (localStorage.getItem('liked_xhlazz_site')) return;
-  fetch(`https://api.countapi.xyz/hit/${NAMESPACE}/${LIKE_KEY}`)
+  fetch(`https://apicount.vercel.app/api/${NAMESPACE}/${LIKE_KEY}`)
     .then(res => res.json())
     .then(data => {
       document.getElementById('like-count').textContent = data.value;
@@ -164,12 +159,11 @@ function addNeonLike() {
       localStorage.setItem('liked_xhlazz_site', '1');
     })
     .catch(() => {
-      alert('Like failed: CountAPI may be blocked.');
+      alert('Like failed: Counter API may be blocked.');
     });
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Make sure the stats section exists before binding
   if (document.getElementById('view-count')) updateNeonViewCounter();
   if (document.getElementById('like-count')) updateNeonLikeCounter();
 
@@ -187,5 +181,4 @@ document.addEventListener('DOMContentLoaded', () => {
       document.getElementById('like-heart').classList.add('liked');
     }
   }
-});
 });
