@@ -209,58 +209,83 @@ iframe {
 }
     }
 }
-#site-footer {
+#global-stats-section {
   width: 100%;
-  background: rgba(0,0,0,0.93);
-  color: #fff;
-  text-align: center;
-  padding: 18px 0 10px 0;
-  font-size: 1.09em;
-  letter-spacing: 0.05em;
-  border-top: 2px solid #fff;
-  margin-top: 45px;
-  position: relative;
-  z-index: 20;
-  box-shadow: 0 -3px 20px #000a;
+  display: flex;
+  justify-content: center;
+  margin: 48px 0 0 0;
 }
 
-#site-stats {
+.stats-box {
+  background: rgba(20,20,20,0.7);
+  border-radius: 24px;
+  box-shadow: 0 0 32px #fff8, 0 0 12px #fff2 inset;
+  padding: 18px 36px;
   display: flex;
-  gap: 24px;
-  justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
+  gap: 18px;
+}
+
+.neon-text {
+  font-size: 1.25em;
+  color: #fff;
+  text-shadow:
+    0 0 8px #fff,
+    0 0 18px #fff7,
+    0 0 32px #fff3;
+  font-weight: bold;
+  margin: 0 6px;
+  letter-spacing: 1px;
+}
+
+.neon-label {
+  color: #fff;
+  text-shadow:
+    0 0 5px #fff,
+    0 0 15px #fff7;
+  font-size: 1em;
+  margin-right: 10px;
+}
+
+.neon-icon {
+  font-size: 1.35em;
+  filter: drop-shadow(0 0 8px #fff9);
+  vertical-align: middle;
 }
 
 #like-btn {
-  margin-left: 12px;
-  font-size: 1em;
-  background: #222;
-  color: #fff;
-  border: 1px solid #fff;
-  border-radius: 20px;
-  padding: 6px 16px;
+  background: transparent;
+  border: none;
   cursor: pointer;
-  transition: background 0.22s, color 0.22s, transform 0.13s;
-  outline: none;
+  padding: 4px 12px;
+  border-radius: 32px;
   display: flex;
   align-items: center;
   gap: 6px;
+  font-size: 1em;
+  transition: background 0.2s, box-shadow 0.22s, transform 0.2s;
+  outline: none;
+  margin-left: 18px;
+  color: #fff;
+  text-shadow:
+    0 0 8px #fff,
+    0 0 18px #fff7;
 }
 
-#like-btn:hover {
-  background: #ff5f87;
-  color: #fff;
+#like-btn:hover, #like-btn.liked {
+  background: rgba(255,255,255,0.07);
+  box-shadow: 0 0 22px #fff, 0 0 8px #fff6 inset;
   transform: scale(1.08);
 }
 
-#like-btn.liked, #like-heart.liked {
-  color: #ff8cb7;
+#like-heart.liked {
+  color: #ffb6e6;
+  filter: drop-shadow(0 0 8px #ffb6e6) drop-shadow(0 0 20px #fff9);
   animation: likedFlash 0.5s;
 }
 
 @keyframes likedFlash {
-  0% { background: #ffb7e0; color: #fff; }
-  60% { background: #fff; color: #ff5f87;}
-  100% { background: none; color: #ff8cb7;}
+  0% { color: #fff; filter: drop-shadow(0 0 18px #fff); }
+  70% { color: #ffb6e6; filter: drop-shadow(0 0 24px #fff);}
+  100% { color: #ffb6e6;}
 }
