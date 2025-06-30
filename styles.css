@@ -322,7 +322,6 @@ iframe {
 }
 @media (hover: none) {
   .fun-btn:active {
-    /* On touch devices, keep neon effect on tap */
     border-color: #fff;
     box-shadow:
       0 0 22px 7px #fff,
@@ -407,4 +406,67 @@ body.light-mode .fun-btn:focus {
   color: #fff;
   border-color: #222;
   box-shadow: 0 0 24px #2228;
+}
+
+/* Rain Stars */
+.rain-star {
+  position: fixed;
+  top: -30px;
+  font-size: 1.6em;
+  pointer-events: none;
+  opacity: 0.92;
+  animation: rainStarFall 1.9s linear forwards;
+  z-index: 9999;
+}
+@keyframes rainStarFall {
+  to {
+    top: 96vh;
+    opacity: 0.2;
+    transform: rotate(360deg) scale(0.7);
+  }
+}
+
+/* Zoom Everything */
+.zoomed {
+  transform: scale(1.15) !important;
+  transition: transform 0.5s cubic-bezier(.68,-0.55,.27,1.55);
+}
+
+/* Blur Everything */
+.blurry {
+  filter: blur(4px) brightness(1.05);
+  transition: filter 0.5s;
+}
+
+/* Typewriter fact output */
+#typewriter-fact-output {
+  min-height: 22px;
+  font-family: 'Nunito', monospace, sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  text-shadow: 0 0 18px #fff, 0 0 10px #fff7;
+}
+
+.bubble {
+  position: fixed;
+  bottom: -40px;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(173,216,230,0.8);
+  animation: floatBubble 2.8s linear forwards;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.8;
+}
+@keyframes floatBubble {
+  from {
+    transform: translateY(0) scale(1);
+    opacity: 0.8;
+  }
+  to {
+    transform: translateY(-95vh) scale(1.2);
+    opacity: 0.12;
+  }
 }
