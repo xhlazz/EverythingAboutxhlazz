@@ -328,6 +328,62 @@ iframe {
       0 0 44px 10px #fff7;
   }
 }
+#fun-experiments {
+  margin: 36px 0 0 0;
+  padding: 32px 0 28px 0;
+  background: rgba(255,255,255,0.03);
+  border-radius: 18px;
+  box-shadow: 0 0 22px #fff1;
+  text-align: center;
+}
+.fun-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  justify-content: center;
+  margin-top: 18px;
+}
+.fun-btn {
+  font-family: inherit;
+  font-size: 1.08em;
+  background: rgba(10,10,10,0.56);
+  color: #fff;
+  border: 2.5px solid #fff;
+  border-radius: 18px;
+  padding: 12px 28px;
+  cursor: pointer;
+  margin: 4px;
+  box-shadow: 0 0 10px #fff6;
+  transition:
+    background 0.17s,
+    box-shadow 0.19s,
+    border-color 0.15s,
+    color 0.18s,
+    transform 0.15s;
+  outline: none;
+  position: relative;
+  overflow: hidden;
+}
+.fun-btn:hover,
+.fun-btn:focus,
+.fun-btn:active {
+  background: #fff;
+  color: #111;
+  border-color: #fff;
+  box-shadow:
+    0 0 22px 7px #fff,
+    0 0 44px 10px #fff7;
+  transform: scale(1.11) rotate(-2deg);
+  z-index: 1;
+}
+@media (hover: none) {
+  .fun-btn:active {
+    border-color: #fff;
+    box-shadow:
+      0 0 22px 7px #fff,
+      0 0 44px 10px #fff7;
+  }
+}
 
 /* Fun experiment animations */
 @keyframes spinTitleAnim {
@@ -408,16 +464,22 @@ body.light-mode .fun-btn:focus {
   box-shadow: 0 0 24px #2228;
 }
 
-/* Rain Stars */
-.rain-star {
+/* Rain effects */
+.rain-star,
+.rain-burger,
+.rain-fish {
   position: fixed;
   top: -30px;
-  font-size: 1.6em;
   pointer-events: none;
   opacity: 0.92;
-  animation: rainStarFall 1.9s linear forwards;
   z-index: 9999;
+  animation: rainStarFall 1.9s linear forwards;
+  user-select: none;
 }
+.rain-star { font-size: 1.6em; }
+.rain-burger { font-size: 2em; }
+.rain-fish { font-size: 2em; }
+
 @keyframes rainStarFall {
   to {
     top: 96vh;
@@ -468,27 +530,5 @@ body.light-mode .fun-btn:focus {
   to {
     transform: translateY(-95vh) scale(1.2);
     opacity: 0.12;
-  }
-}
-.rain-star,
-.rain-burger,
-.rain-fish {
-  position: fixed;
-  top: -30px;
-  pointer-events: none;
-  opacity: 0.92;
-  z-index: 9999;
-  animation: rainStarFall 1.9s linear forwards;
-  user-select: none;
-}
-.rain-star { font-size: 1.6em; }
-.rain-burger { font-size: 2em; }
-.rain-fish { font-size: 2em; }
-
-@keyframes rainStarFall {
-  to {
-    top: 96vh;
-    opacity: 0.2;
-    transform: rotate(360deg) scale(0.7);
   }
 }
