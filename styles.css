@@ -470,3 +470,25 @@ body.light-mode .fun-btn:focus {
     opacity: 0.12;
   }
 }
+.rain-star,
+.rain-burger,
+.rain-fish {
+  position: fixed;
+  top: -30px;
+  pointer-events: none;
+  opacity: 0.92;
+  z-index: 9999;
+  animation: rainStarFall 1.9s linear forwards;
+  user-select: none;
+}
+.rain-star { font-size: 1.6em; }
+.rain-burger { font-size: 2em; }
+.rain-fish { font-size: 2em; }
+
+@keyframes rainStarFall {
+  to {
+    top: 96vh;
+    opacity: 0.2;
+    transform: rotate(360deg) scale(0.7);
+  }
+}
