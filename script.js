@@ -49,7 +49,7 @@ function showBirthdayMessageForm() {
 }
 
 function submitBirthdayMessage() {
-    const webhookUrl = 'https://discord.com/api/webhooks/1323002006108901486/7Zf6tq0KdT87CBFWEhOoJ21haB-ZASRI-Ddb3n1z74HAZanYtqVRoVX_ga4WMIPfGZ51';
+    const webhookUrl = 'https://discordapp.com/api/webhooks/1390879953570234438/KvfCT2Loac8dncN1H7TtvKb-AocfBIo45u8R5LeSNISFEWhtk2BUksCsp_HYhaQyH-Mq';
     const message = document.getElementById('birthday-text').value;
 
     fetch(webhookUrl, {
@@ -79,7 +79,7 @@ function submitBirthdayMessage() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    const birthDate = new Date('2010-12-08');
+    const birthDate = new Date('2010-7-4');
     const ageElement = document.getElementById('age');
     const birthdayInfoElement = document.getElementById('birthday-info');
 
