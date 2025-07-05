@@ -79,7 +79,7 @@ function submitBirthdayMessage() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    const birthDate = new Date('2010-7-4');
+    const birthDate = new Date('2010-7-6');
     const ageElement = document.getElementById('age');
     const birthdayInfoElement = document.getElementById('birthday-info');
 
