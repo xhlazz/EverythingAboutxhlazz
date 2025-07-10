@@ -324,3 +324,34 @@ function bubbles() {
     setTimeout(() => bubble.remove(), 2900);
   }
 }
+// ---- Birthday Countdown ----
+
+// Set your birthday here (month is 0-indexed: 0=January, 6=July, 11=December)
+const BIRTHDAY_MONTH = 11;  // July (since JS months are 0-indexed)
+const BIRTHDAY_DAY = 8;   // 23rd
+
+function updateBirthdayCountdown() {
+  const now = new Date();
+  // Next birthday year
+  let year = now.getFullYear();
+  let nextBirthday = new Date(year, BIRTHDAY_MONTH, BIRTHDAY_DAY, 0, 0, 0, 0);
+  if (now > nextBirthday) {
+    nextBirthday = new Date(year + 1, BIRTHDAY_MONTH, BIRTHDAY_DAY, 0, 0, 0, 0);
+  }
+  const totalSeconds = Math.floor((nextBirthday - now) / 1000);
+  const days = Math.floor(totalSeconds / (3600 * 24));
+  const hours = Math.floor((totalSeconds % (3600 * 24)) / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+  const seconds = totalSeconds % 60;
+
+  document.getElementById('bcd-days').textContent = days;
+  document.getElementById('bcd-hours').textContent = hours.toString().padStart(2, "0");
+  document.getElementById('bcd-minutes').textContent = minutes.toString().padStart(2, "0");
+  document.getElementById('bcd-seconds').textContent = seconds.toString().padStart(2, "0");
+}
+
+// Start the countdown timer if the section exists
+if (document.getElementById('birthday-countdown')) {
+  updateBirthdayCountdown();
+  setInterval(updateBirthdayCountdown, 1000);
+}
