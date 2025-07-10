@@ -532,3 +532,54 @@ body.light-mode .fun-btn:focus {
     opacity: 0.12;
   }
 }
+/* Add this at the end of your CSS file */
+
+#fun-surprise-toast {
+  position: fixed;
+  top: 32px;
+  right: 32px;
+  z-index: 999999;
+  min-width: 220px;
+  max-width: 340px;
+  background: rgba(18, 18, 18, 0.92);
+  color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 0 30px #fff7, 0 0 10px #fff9;
+  padding: 23px 30px 18px 20px;
+  font-size: 1.1em;
+  font-family: inherit;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-40px) scale(0.93);
+  transition: opacity 0.32s, transform 0.28s;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  border: 2px solid #fff3;
+  box-sizing: border-box;
+}
+
+#fun-surprise-toast.show {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateY(0) scale(1.03);
+}
+
+#fun-surprise-toast .toast-close {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1.5em;
+  cursor: pointer;
+  margin-left: 10px;
+  margin-top: -8px;
+  opacity: 0.6;
+  transition: opacity 0.17s;
+  position: absolute;
+  top: 6px;
+  right: 11px;
+  outline: none;
+}
+#fun-surprise-toast .toast-close:hover {
+  opacity: 1;
+}
