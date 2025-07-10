@@ -583,3 +583,37 @@ body.light-mode .fun-btn:focus {
 #fun-surprise-toast .toast-close:hover {
   opacity: 1;
 }
+/* Birthday Countdown */
+#birthday-countdown-section {
+  margin: 28px 0 0 0;
+  padding: 24px 0 18px 0;
+  text-align: center;
+}
+.countdown-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+  background: rgba(255,255,255,0.04);
+  border-radius: 18px;
+  box-shadow: 0 0 16px #fff1, 0 0 6px #fff3 inset;
+  padding: 20px 32px;
+  margin-top: 12px;
+  font-size: 1.45em;
+  font-family: inherit;
+}
+.countdown-part {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 60px;
+}
+.countdown-label {
+  font-size: 0.55em;
+  color: #b7b7b7;
+  letter-spacing: 1px;
+  margin-top: 6px;
+}
+#birthday-countdown span {
+  font-variant-numeric: tabular-nums;
+}
