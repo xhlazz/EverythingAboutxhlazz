@@ -655,3 +655,19 @@ body.light-mode .fun-btn:focus {
   60% { box-shadow: 0 0 18px 6px #52f0ffb0, 0 0 20px #fff6 inset; }
   100% { box-shadow: 0 0 12px 3px #52f0ffb0, 0 0 20px #fff3 inset; }
 }
+.rain-fun-emoji {
+  position: fixed;
+  top: -30px;
+  pointer-events: none;
+  opacity: 0.96;
+  z-index: 9999;
+  animation: rainFunEmojiFall 1.5s linear forwards;
+  user-select: none;
+}
+@keyframes rainFunEmojiFall {
+  to {
+    top: 92vh;
+    opacity: 0.15;
+    transform: rotate(360deg) scale(0.62);
+  }
+}
