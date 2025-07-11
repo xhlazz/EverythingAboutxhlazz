@@ -507,7 +507,7 @@ function submitWitayCode() {
     document.getElementById('witay-form').style.display = 'none';
     msgDiv.style.display = 'block';
     msgDiv.innerHTML = ''; // clear for animation
-    witayTypewriterEffect( ${witayCodes[code]}`, msgDiv);
+    witayTypewriterEffect(`<span style="font-size:1.5em;vertical-align:middle;">✨</span> ${witayCodes[code]}`, msgDiv);
   } else {
     errorDiv.textContent = "Wrong code! Try again.";
     errorDiv.classList.add('show');
