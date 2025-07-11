@@ -353,55 +353,6 @@ if (document.getElementById('birthday-countdown')) {
   updateBirthdayCountdown();
   setInterval(updateBirthdayCountdown, 1000);
 }
-// --- What I Think About You (animated/cool version with typewriter & emoji rain) ---
-const witayCodes = {
-  "L344H": "You are a truly loyal friend. I always appreciate your support.",
-  "J35U5": "Your sense of humor makes every day brighter. 😁",
-  "M3LKN": "You inspire me to keep going, even when things are tough.",
-  "M1K1X": "I admire your creativity and honesty.",
-  "NONEE": "You're one of the most caring people I've ever met."
-};
-
-function isEmoji(char) {
-  // Simple emoji detection for most unicode emoji
-  // (includes faces, hearts, etc, but not all flags or complex emoji)
-  return /\p{Emoji}/u.test(char);
-}
-
-function rainEmoji(emoji) {
-  for (let i = 0; i < 18; i++) {
-    const drop = document.createElement('span');
-    drop.textContent = emoji;
-    drop.className = 'rain-fun-emoji';
-    drop.style.left = `${Math.random() * 95}vw`;
-    drop.style.fontSize = `${1.6 + Math.random()}em`;
-    drop.style.animationDuration = `${1.2 + Math.random()}s`;
-    document.body.appendChild(drop);
-    setTimeout(() => drop.remove(), 1800);
-  }
-}
-
-function witayTypewriterEffect(text, container) {
-  container.innerHTML = ""; // clear
-  container.style.display = 'block';
-  let i = 0;
-  function type() {
-    if (i < text.length) {
-      const char = text[i];
-      // If it's an emoji, rain it at this moment
-      if (isEmoji(char)) {
-        rainEmoji(char);
-      }
-      container.innerHTML += char;
-      i++;
-      setTimeout(type, 32 + (isEmoji(char) ? 130 : 0));
-    } else {
-      container.innerHTML += `<br><br><span style="font-size:.9em;opacity:.7;">(Reload to try another code!)</span>`;
-    }
-  }
-  type();
-}
-
 const witayCodes = {
   "L344H": "You are a truly loyal friend. I always appreciate your support.",
   "J35U5": "Your sense of humor makes every day brighter. 😁",
