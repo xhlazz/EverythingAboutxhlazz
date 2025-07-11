@@ -353,33 +353,44 @@ if (document.getElementById('birthday-countdown')) {
   updateBirthdayCountdown();
   setInterval(updateBirthdayCountdown, 1000);
 }
+// --- What I Think About You (animated/cool version) ---
 const witayCodes = {
-  "18472": "You are a truly loyal friend. I always appreciate your support.",
-  "90215": "Your sense of humor makes every day brighter. 😁",
-  "56730": "You inspire me to keep going, even when things are tough.",
-  "43981": "I admire your creativity and honesty.",
-  "25096": "You're one of the most caring people I've ever met."
+  "L344H": "You are a truly loyal friend. I always appreciate your support.",
+  "J35U5": "Your sense of humor makes every day brighter. 😁",
+  "M3LKN": "You inspire me to keep going, even when things are tough.",
+  "M1K1X": "I admire your creativity and honesty.",
+  "NONEE": "You're one of the most caring people I've ever met."
 };
 
 function submitWitayCode() {
   const input = document.getElementById('witay-code-input');
-  const code = input.value.trim();
+  const code = input.value.trim().toUpperCase();
   const errorDiv = document.getElementById('witay-error');
   const msgDiv = document.getElementById('witay-secret-message');
+  errorDiv.classList.remove('show');
   errorDiv.textContent = '';
   msgDiv.style.display = 'none';
   msgDiv.textContent = '';
 
-  if (!/^\d{5}$/.test(code)) {
-    errorDiv.textContent = "Please enter a valid 5-digit code.";
+  // Validate code: must be 5 alphanum characters
+  if (!/^[A-Z0-9]{5}$/.test(code)) {
+    errorDiv.textContent = "Please enter a valid 5-character code.";
+    errorDiv.classList.add('show');
+    input.classList.add('witay-shake');
+    setTimeout(()=>input.classList.remove('witay-shake'), 400);
     return;
   }
+  // Reveal if found
   if (witayCodes[code]) {
     document.getElementById('witay-form').style.display = 'none';
-    msgDiv.textContent = witayCodes[code] + " (If you want to see this again, reload the page!)";
+    msgDiv.innerHTML = `<span style="font-size:1.5em;vertical-align:middle;">✨</span> ${witayCodes[code]} <br><br><span style="font-size:.9em;opacity:.7;">(Reload to try another code!)</span>`;
     msgDiv.style.display = 'block';
+    msgDiv.style.animation = 'witayFadeIn 0.8s cubic-bezier(.23,1.17,.51,1.03) forwards';
   } else {
     errorDiv.textContent = "Wrong code! Try again.";
+    errorDiv.classList.add('show');
     input.value = '';
+    input.classList.add('witay-shake');
+    setTimeout(()=>input.classList.remove('witay-shake'), 400);
   }
 }
