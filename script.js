@@ -326,13 +326,11 @@ function bubbles() {
 }
 // ---- Birthday Countdown ----
 
-// Set your birthday here (month is 0-indexed: 0=January, 6=July, 11=December)
 const BIRTHDAY_MONTH = 11;  // July (since JS months are 0-indexed)
 const BIRTHDAY_DAY = 8;   // 23rd
 
 function updateBirthdayCountdown() {
   const now = new Date();
-  // Next birthday year
   let year = now.getFullYear();
   let nextBirthday = new Date(year, BIRTHDAY_MONTH, BIRTHDAY_DAY, 0, 0, 0, 0);
   if (now > nextBirthday) {
@@ -354,4 +352,34 @@ function updateBirthdayCountdown() {
 if (document.getElementById('birthday-countdown')) {
   updateBirthdayCountdown();
   setInterval(updateBirthdayCountdown, 1000);
+}
+const witayCodes = {
+  "18472": "You are a truly loyal friend. I always appreciate your support.",
+  "90215": "Your sense of humor makes every day brighter. 😁",
+  "56730": "You inspire me to keep going, even when things are tough.",
+  "43981": "I admire your creativity and honesty.",
+  "25096": "You're one of the most caring people I've ever met."
+};
+
+function submitWitayCode() {
+  const input = document.getElementById('witay-code-input');
+  const code = input.value.trim();
+  const errorDiv = document.getElementById('witay-error');
+  const msgDiv = document.getElementById('witay-secret-message');
+  errorDiv.textContent = '';
+  msgDiv.style.display = 'none';
+  msgDiv.textContent = '';
+
+  if (!/^\d{5}$/.test(code)) {
+    errorDiv.textContent = "Please enter a valid 5-digit code.";
+    return;
+  }
+  if (witayCodes[code]) {
+    document.getElementById('witay-form').style.display = 'none';
+    msgDiv.textContent = witayCodes[code] + " (If you want to see this again, reload the page!)";
+    msgDiv.style.display = 'block';
+  } else {
+    errorDiv.textContent = "Wrong code! Try again.";
+    input.value = '';
+  }
 }
