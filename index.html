@@ -352,16 +352,17 @@
     <button class="fun-btn" onclick="bubbles()">🫧 Bubbles!</button>
   </div>
   <div id="typewriter-fact-output" style="margin-top:20px; font-size:1.1em; color:#fff; min-height:22px;"></div>
-</section>
-        <section id="what-i-think-section" class="animate-section">
+<section id="what-i-think-section" class="animate-section">
   <h2 class="animate-header">What I Think About You</h2>
-  <div id="witay-form">
-    <p>Enter your 5-digit code below to reveal a secret message:</p>
-    <input id="witay-code-input" type="text" maxlength="5" pattern="[0-9]{5}" inputmode="numeric" autocomplete="off" style="font-size:1.1em;padding:6px 12px;border-radius:8px;border:1.5px solid #fff;outline:none;">
-    <button onclick="submitWitayCode()" class="fun-btn" style="margin-left:10px;">Unlock</button>
-    <div id="witay-error" style="color:#ff6b6b;margin-top:7px;min-height:20px;"></div>
+  <div id="witay-form" class="witay-glass">
+    <p class="witay-prompt">Enter your 5-character code to reveal a secret:</p>
+    <div class="witay-input-row">
+      <input id="witay-code-input" type="text" maxlength="5" pattern="[A-Za-z0-9]{5}" inputmode="text" autocomplete="off" placeholder="Code" class="witay-code-input">
+      <button onclick="submitWitayCode()" class="fun-btn witay-btn">Unlock</button>
+    </div>
+    <div id="witay-error" class="witay-error"></div>
   </div>
-  <div id="witay-secret-message" style="display:none;margin-top:24px;font-size:1.2em;color:#eafaff;"></div>
+  <div id="witay-secret-message" class="witay-secret-message"></div>
 </section>
     </main>
     <audio id="background-audio" autoplay loop></audio>
