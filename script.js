@@ -353,7 +353,7 @@ if (document.getElementById('birthday-countdown')) {
   updateBirthdayCountdown();
   setInterval(updateBirthdayCountdown, 1000);
 }
-// --- What I Think About You (animated/cool version) ---
+// --- What I Think About You (animated/cool version with typewriter & emoji rain) ---
 const witayCodes = {
   "L344H": "You are a truly loyal friend. I always appreciate your support.",
   "J35U5": "Your sense of humor makes every day brighter. 😁",
@@ -361,6 +361,46 @@ const witayCodes = {
   "M1K1X": "I admire your creativity and honesty.",
   "NONEE": "You're one of the most caring people I've ever met."
 };
+
+function isEmoji(char) {
+  // Simple emoji detection for most unicode emoji
+  // (includes faces, hearts, etc, but not all flags or complex emoji)
+  return /\p{Emoji}/u.test(char);
+}
+
+function rainEmoji(emoji) {
+  for (let i = 0; i < 18; i++) {
+    const drop = document.createElement('span');
+    drop.textContent = emoji;
+    drop.className = 'rain-fun-emoji';
+    drop.style.left = `${Math.random() * 95}vw`;
+    drop.style.fontSize = `${1.6 + Math.random()}em`;
+    drop.style.animationDuration = `${1.2 + Math.random()}s`;
+    document.body.appendChild(drop);
+    setTimeout(() => drop.remove(), 1800);
+  }
+}
+
+function witayTypewriterEffect(text, container) {
+  container.innerHTML = ""; // clear
+  container.style.display = 'block';
+  let i = 0;
+  function type() {
+    if (i < text.length) {
+      const char = text[i];
+      // If it's an emoji, rain it at this moment
+      if (isEmoji(char)) {
+        rainEmoji(char);
+      }
+      container.innerHTML += char;
+      i++;
+      setTimeout(type, 32 + (isEmoji(char) ? 130 : 0));
+    } else {
+      container.innerHTML += `<br><br><span style="font-size:.9em;opacity:.7;">(Reload to try another code!)</span>`;
+    }
+  }
+  type();
+}
 
 function submitWitayCode() {
   const input = document.getElementById('witay-code-input');
@@ -370,7 +410,7 @@ function submitWitayCode() {
   errorDiv.classList.remove('show');
   errorDiv.textContent = '';
   msgDiv.style.display = 'none';
-  msgDiv.textContent = '';
+  msgDiv.innerHTML = '';
 
   // Validate code: must be 5 alphanum characters
   if (!/^[A-Z0-9]{5}$/.test(code)) {
@@ -383,9 +423,10 @@ function submitWitayCode() {
   // Reveal if found
   if (witayCodes[code]) {
     document.getElementById('witay-form').style.display = 'none';
-    msgDiv.innerHTML = `<span style="font-size:1.5em;vertical-align:middle;">✨</span> ${witayCodes[code]} <br><br><span style="font-size:.9em;opacity:.7;">(Reload to try another code!)</span>`;
     msgDiv.style.display = 'block';
-    msgDiv.style.animation = 'witayFadeIn 0.8s cubic-bezier(.23,1.17,.51,1.03) forwards';
+    msgDiv.innerHTML = ''; // clear for animation
+    // Animate with typewriter, rain emoji when it appears
+    witayTypewriterEffect(`<span style="font-size:1.5em;vertical-align:middle;">✨</span> ${witayCodes[code]}`, msgDiv);
   } else {
     errorDiv.textContent = "Wrong code! Try again.";
     errorDiv.classList.add('show');
@@ -394,3 +435,5 @@ function submitWitayCode() {
     setTimeout(()=>input.classList.remove('witay-shake'), 400);
   }
 }
+
+// --- Emoji rain CSS (add this to your CSS!) ---
