@@ -354,11 +354,12 @@ if (document.getElementById('birthday-countdown')) {
   setInterval(updateBirthdayCountdown, 1000);
 }
 const witayCodes = {
-  "L344H": "You are a truly loyal friend. I always appreciate your support.",
-  "J35U5": "Your sense of humor makes every day brighter. 😁",
-  "M3LKN": "You inspire me to keep going, even when things are tough.",
-  "M1K1X": "I admire your creativity and honesty.",
-  "NONEE": "You're one of the most caring people I've ever met."
+  "L344H": "I didn't write anything about you.. Yet.",
+  "J35U5": "I didn't write anything about you.. Yet.",
+  "M3LKN": "I didn't write anything about you.. Yet.",
+  "M1K1X": "I didn't write anything about you.. Yet.",
+  "A0NS1": "I didn't write anything about you.. Yet."
+  "E1K1N": "I didn't write anything about you.. Yet."
 };
 
 function isEmoji(char) {
