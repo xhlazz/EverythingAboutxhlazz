@@ -402,41 +402,16 @@ function witayTypewriterEffect(text, container) {
   type();
 }
 
-function submitWitayCode() {
-  const input = document.getElementById('witay-code-input');
-  const code = input.value.trim().toUpperCase();
-  const errorDiv = document.getElementById('witay-error');
-  const msgDiv = document.getElementById('witay-secret-message');
-  errorDiv.classList.remove('show');
-  errorDiv.textContent = '';
-  msgDiv.style.display = 'none';
-  msgDiv.innerHTML = '';
+const witayCodes = {
+  "L344H": "You are a truly loyal friend. I always appreciate your support.",
+  "J35U5": "Your sense of humor makes every day brighter. 😁",
+  "M3LKN": "You inspire me to keep going, even when things are tough.",
+  "M1K1X": "I admire your creativity and honesty.",
+  "NONEE": "You're one of the most caring people I've ever met."
+};
 
-  // Validate code: must be 5 alphanum characters
-  if (!/^[A-Z0-9]{5}$/.test(code)) {
-    errorDiv.textContent = "Please enter a valid 5-character code.";
-    errorDiv.classList.add('show');
-    input.classList.add('witay-shake');
-    setTimeout(()=>input.classList.remove('witay-shake'), 400);
-    return;
-  }
-  // Reveal if found
-  if (witayCodes[code]) {
-    document.getElementById('witay-form').style.display = 'none';
-    msgDiv.style.display = 'block';
-    msgDiv.innerHTML = ''; // clear for animation
-    // Animate with typewriter, rain emoji when it appears
-    witayTypewriterEffect(`<span style="font-size:1.5em;vertical-align:middle;">✨</span> ${witayCodes[code]}`, msgDiv);
-  } else {
-    errorDiv.textContent = "Wrong code! Try again.";
-    errorDiv.classList.add('show');
-    input.value = '';
-    input.classList.add('witay-shake');
-    setTimeout(()=>input.classList.remove('witay-shake'), 400);
-  }
-}
 function isEmoji(char) {
-  // Simple emoji detection (broad but not perfect)
+  // Simple emoji detection for most unicode emoji
   return /\p{Emoji}/u.test(char);
 }
 
@@ -450,5 +425,64 @@ function rainEmoji(emoji) {
     drop.style.animationDuration = `${1.2 + Math.random()}s`;
     document.body.appendChild(drop);
     setTimeout(() => drop.remove(), 1800);
+  }
+}
+
+// Typewriter effect for plain text only
+function witayTypewriterEffect(text, container, onDone) {
+  container.innerHTML = ""; // clear
+  container.style.display = 'block';
+  let i = 0;
+  function type() {
+    if (i < text.length) {
+      const char = text[i];
+      if (isEmoji(char)) {
+        rainEmoji(char);
+      }
+      container.innerHTML += char;
+      i++;
+      setTimeout(type, 32 + (isEmoji(char) ? 130 : 0));
+    } else {
+      if (typeof onDone === "function") onDone();
+    }
+  }
+  type();
+}
+
+function submitWitayCode() {
+  const input = document.getElementById('witay-code-input');
+  const code = input.value.trim().toUpperCase();
+  const errorDiv = document.getElementById('witay-error');
+  const msgDiv = document.getElementById('witay-secret-message');
+  errorDiv.classList.remove('show');
+  errorDiv.textContent = '';
+  msgDiv.style.display = 'none';
+  msgDiv.innerHTML = '';
+
+  if (!/^[A-Z0-9]{5}$/.test(code)) {
+    errorDiv.textContent = "Please enter a valid 5-character code.";
+    errorDiv.classList.add('show');
+    input.classList.add('witay-shake');
+    setTimeout(()=>input.classList.remove('witay-shake'), 400);
+    return;
+  }
+  if (witayCodes[code]) {
+    document.getElementById('witay-form').style.display = 'none';
+    msgDiv.style.display = 'block';
+    msgDiv.innerHTML = ''; // clear for animation
+    // Typewriter only the text
+    witayTypewriterEffect(witayCodes[code], msgDiv, function() {
+      // After animation, prepend the neon emoji and append reload text
+      msgDiv.innerHTML =
+        `<span style="font-size:1.5em;vertical-align:middle;text-shadow:0 0 8px #fff,0 0 16px #fff6;">✨</span> `
+        + msgDiv.innerHTML +
+        `<br><br><span style="font-size:.9em;opacity:.7;">(Reload to try another code!)</span>`;
+    });
+  } else {
+    errorDiv.textContent = "Wrong code! Try again.";
+    errorDiv.classList.add('show');
+    input.value = '';
+    input.classList.add('witay-shake');
+    setTimeout(()=>input.classList.remove('witay-shake'), 400);
   }
 }
