@@ -617,144 +617,41 @@ body.light-mode .fun-btn:focus {
 #birthday-countdown span {
   font-variant-numeric: tabular-nums;
 }
-// ---- "What I Think About You" code unlock ----
-const witayCodes = {
-  "18472": "You are a truly loyal friend. I always appreciate your support.",
-  "90215": "Your sense of humor makes every day brighter. 😁",
-  "56730": "You inspire me to keep going, even when things are tough.",
-  "43981": "I admire your creativity and honesty.",
-  "25096": "You're one of the most caring people I've ever met."
-};
-
-function submitWitayCode() {
-  const input = document.getElementById('witay-code-input');
-  const code = input.value.trim();
-  const errorDiv = document.getElementById('witay-error');
-  const msgDiv = document.getElementById('witay-secret-message');
-  errorDiv.textContent = '';
-  msgDiv.style.display = 'none';
-  msgDiv.textContent = '';
-
-  if (!/^\d{5}$/.test(code)) {
-    errorDiv.textContent = "Please enter a valid 5-digit code.";
-    return;
-  }
-  if (witayCodes[code]) {
-    document.getElementById('witay-form').style.display = 'none';
-    msgDiv.textContent = witayCodes[code] + " (If you want to see this again, reload the page!)";
-    msgDiv.style.display = 'block';
-  } else {
-    errorDiv.textContent = "Wrong code! Try again.";
-    input.value = '';
-  }
-}
-/* --- What I Think About You modern styles --- */
-#what-i-think-section {
-  margin: 32px auto 0 auto;
-  max-width: 460px;
-  padding: 38px 0 36px 0;
-  background: transparent;
-  border: none;
-  box-shadow: none;
-  text-align: center;
-}
-
-.witay-glass {
-  background: rgba(30,30,35,0.56);
-  border: 1.5px solid rgba(255,255,255,0.18);
-  border-radius: 20px;
-  box-shadow: 0 8px 32px 0 #1114, 0 2px 8px #fff2;
-  padding: 32px 22px 22px 22px;
-  backdrop-filter: blur(7.5px);
-  transition: box-shadow 0.22s;
-  position: relative;
-  margin: 0 auto;
-  max-width: 370px;
-  min-width: 0;
-}
-
-.witay-prompt {
-  font-size: 1.12em;
-  margin-bottom: 20px;
-  color: #e0e8ff;
-  letter-spacing: 0.01em;
-}
-
-.witay-input-row {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-}
-
+/* Stylish, modern textbox for dark/glass theme */
 .witay-code-input {
-  font-size: 1.2em;
-  letter-spacing: 0.18em;
-  background: rgba(255,255,255,0.13);
-  color: #fff;
-  border: 2px solid #fff2;
-  border-radius: 9px;
-  padding: 10px 14px;
+  font-size: 1.22em;
+  font-family: inherit;
+  letter-spacing: 0.19em;
+  background: rgba(30,32,45,0.74);
+  color: #eafaff;
+  border: 2.2px solid rgba(102,231,255,0.23);
+  border-radius: 11px;
+  padding: 12px 18px;
   outline: none;
-  width: 110px;
+  width: 120px;
   text-align: center;
-  transition: border 0.19s, box-shadow 0.19s, background 0.18s;
-  box-shadow: 0 0 9px #fff2;
+  transition:
+    border 0.22s cubic-bezier(.56,1.56,.54,.97),
+    box-shadow 0.22s cubic-bezier(.56,1.56,.54,.97),
+    background 0.18s,
+    color 0.17s;
+  box-shadow:
+    0 1px 8px #06a3e77c,
+    0 1px 18px #fff1 inset;
+  backdrop-filter: blur(4.5px);
+  filter: drop-shadow(0 0 2px #5ebefc55);
 }
 .witay-code-input:focus {
-  border: 2px solid #5ebefc;
-  background: rgba(255,255,255,0.23);
-  box-shadow: 0 0 13px #5ebefc9c, 0 0 9px #fff2;
+  border: 2.4px solid #5ebefc;
+  background: rgba(40,55,74,0.86);
+  color: #fff;
+  box-shadow:
+    0 0 12px 3px #52f0ffb0,
+    0 0 20px #fff3 inset;
+  animation: witayInputPulse 0.8s cubic-bezier(.43,1.46,.51,.97);
 }
-
-.witay-btn {
-  padding: 10px 18px;
-  font-size: 1.07em;
-  border-radius: 10px;
-  margin-left: 10px;
-}
-
-.witay-error {
-  min-height: 20px;
-  color: #ff6b8b;
-  font-size: 1em;
-  margin-top: 10px;
-  opacity: 0;
-  transition: opacity 0.24s;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-}
-.witay-error.show {
-  opacity: 1;
-  animation: witayShake 0.38s;
-}
-@keyframes witayShake {
-  0% { transform: translateX(0);}
-  25% { transform: translateX(-8px);}
-  50% { transform: translateX(8px);}
-  75% { transform: translateX(-8px);}
-  100% { transform: translateX(0);}
-}
-
-.witay-secret-message {
-  display: none;
-  margin-top: 25px;
-  font-size: 1.17em;
-  color: #f9feff;
-  border-radius: 15px;
-  background: rgba(40,40,50,0.66);
-  border: 1.5px solid #aaf6fc88;
-  box-shadow: 0 0 22px #5ebefc42, 0 0 7px #fff4 inset;
-  padding: 34px 22px 26px 22px;
-  min-height: 60px;
-  max-width: 400px;
-  margin-left: auto;
-  margin-right: auto;
-  opacity: 0;
-  animation: witayFadeIn 0.8s cubic-bezier(.23,1.17,.51,1.03) forwards;
-}
-@keyframes witayFadeIn {
-  0% { opacity: 0; transform: scale(0.92) translateY(18px);}
-  85% { opacity: 1; transform: scale(1.03) translateY(-2px);}
-  100% { opacity: 1; transform: scale(1) translateY(0);}
+@keyframes witayInputPulse {
+  0% { box-shadow: 0 0 3px #52f0ff, 0 0 5px #fff3 inset; }
+  60% { box-shadow: 0 0 18px 6px #52f0ffb0, 0 0 20px #fff6 inset; }
+  100% { box-shadow: 0 0 12px 3px #52f0ffb0, 0 0 20px #fff3 inset; }
 }
