@@ -354,12 +354,12 @@ if (document.getElementById('birthday-countdown')) {
   setInterval(updateBirthdayCountdown, 1000);
 }
 const witayCodes = {
-  "L34H1": "I didn't write anything about you.. Yet.",
-  "J35U5": "I didn't write anything about you.. Yet.",
-  "M3LKN": "I didn't write anything about you.. Yet.",
-  "M1K1X": "I didn't write anything about you.. Yet.",
-  "A0NS1": "I didn't write anything about you.. Yet.",
-  "E1K1N": "I didn't write anything about you.. Yet.",
+  "L34H1": "I didn't write anything about you.. Yet. Espera hasta que lo haga.",
+  "J35U5": "I didn't write anything about you.. Yet. Espera hasta que lo haga.",
+  "M3LKN": "I didn't write anything about you.. Yet. Espera hasta que lo haga.",
+  "M1K1X": "I didn't write anything about you.. Yet. Espera hasta que lo haga.",
+  "A0NS1": "I didn't write anything about you.. Yet. Espera hasta que lo haga.",
+  "E1K1N": "I didn't write anything about you.. Yet. Espera hasta que lo haga.",
 };
 
 function isEmoji(char) {
