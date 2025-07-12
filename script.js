@@ -358,8 +358,8 @@ const witayCodes = {
   "J35U5": "I didn't write anything about you.. Yet.",
   "M3LKN": "I didn't write anything about you.. Yet.",
   "M1K1X": "I didn't write anything about you.. Yet.",
-  "A0NS1": "I didn't write anything about you.. Yet."
-  "E1K1N": "I didn't write anything about you.. Yet."
+  "A0NS1": "I didn't write anything about you.. Yet.",
+  "E1K1N": "I didn't write anything about you.. Yet.",
 };
 
 function isEmoji(char) {
