@@ -354,7 +354,7 @@ if (document.getElementById('birthday-countdown')) {
   setInterval(updateBirthdayCountdown, 1000);
 }
 const witayCodes = {
-  "L344H": "I didn't write anything about you.. Yet.",
+  "L34H1": "I didn't write anything about you.. Yet.",
   "J35U5": "I didn't write anything about you.. Yet.",
   "M3LKN": "I didn't write anything about you.. Yet.",
   "M1K1X": "I didn't write anything about you.. Yet.",
