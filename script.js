@@ -354,7 +354,7 @@ if (document.getElementById('birthday-countdown')) {
   setInterval(updateBirthdayCountdown, 1000);
 }
 const witayCodes = {
-  "L34H1": "I didn't write anything about you.. Yet. Espera hasta que lo haga.",
+  "L34H1": "Hi Leah, I wanted to clear things up really. This was supposed to be a love paragraph and something since and before I told you about the code, but I actually changed perspective. I wanted to say we shouldnt continue this, its just that there are 3 things that dont add up to me. 1st thing is you having a BF, I don't want to be like a lover or something like that. 2nd thing is you might cheat and might have cheated on a lot of guys before, not to exagerate it, I just think its not ideal to be with someone like that. 3rd Thing is you are probably too good, for me, everything i've said before about you being pretty,beatiful, I like you, its all true and remains true. I just think we shouldnt and keep on as normal friends. And please, if you have any questions about this ask me.",
   "J35U5": "I didn't write anything about you.. Yet. Espera hasta que lo haga.",
   "M3LKN": "I didn't write anything about you.. Yet. Espera hasta que lo haga.",
   "M1K1X": "I didn't write anything about you.. Yet. Espera hasta que lo haga.",
@@ -426,7 +426,7 @@ function submitWitayCode() {
     witayTypewriterEffect(witayCodes[code], msgDiv, function() {
       // After animation, prepend the neon emoji and append reload text
       msgDiv.innerHTML =
-        `<span style="font-size:1.5em;vertical-align:middle;text-shadow:0 0 8px #fff,0 0 16px #fff6;">✨</span> `
+        `<span style="font-size:1.5em;vertical-align:middle;text-shadow:0 0 8px #fff,0 0 16px #fff6;">🗣️</span> `
         + msgDiv.innerHTML +
         `<br><br><span style="font-size:.9em;opacity:.7;">(Reload to try another code!)</span>`;
     });
